@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Panel - EDU-TECH LMS</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  </head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-10 w-10 text-primary-600" viewBox="0 0 40 40" fill="currentColor">
+                        <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                    </svg>
+                    <span class="ml-3 text-xl font-heading font-semibold text-text-primary">EDU-TECH LMS</span>
+                </div>
+                
+                <!-- Admin Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <span class="text-text-secondary">Admin Panel</span>
+                    <div class="flex items-center space-x-4">
+                        <a href="user_login.html" class="text-text-secondary hover:text-primary-600 transition-smooth">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary-600 p-2" aria-label="Toggle mobile menu">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="user_login.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl lg:text-4xl font-heading font-bold text-text-primary mb-2">
+                Admin Control Panel
+            </h1>
+            <p class="text-lg text-text-secondary">
+                Comprehensive system oversight and platform management
+            </p>
+            <div class="flex items-center mt-4 text-sm text-text-secondary">
+                <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- System Overview Dashboard -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-heading font-semibold text-text-primary mb-6">System Overview</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Total Users -->
+                <div class="bg-surface p-6 rounded-2xl shadow-card border border-border-light">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-primary-50 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <svg class="h-6 w-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-heading font-bold text-text-primary" id="total-users">0</span>
+                    </div>
+                    <h3 class="font-medium text-text-primary mb-1">Total Users</h3>
+                    <p class="text-sm text-text-secondary">Real-time data</p>
+                </div>
+
+                <!-- Active Lessons -->
+                <div class="bg-surface p-6 rounded-2xl shadow-card border border-border-light">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-accent-50 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <svg class="h-6 w-6 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-heading font-bold text-text-primary" id="total-lessons">0</span>
+                    </div>
+                    <h3 class="font-medium text-text-primary mb-1">Active Lessons</h3>
+                    <p class="text-sm text-text-secondary">Real-time data</p>
+                </div>
+
+                <!-- Total Quizzes -->
+                <div class="bg-surface p-6 rounded-2xl shadow-card border border-border-light">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-warning-light/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <svg class="h-6 w-6 text-warning-light" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-heading font-bold text-text-primary" id="total-quizzes">0</span>
+                    </div>
+                    <h3 class="font-medium text-text-primary mb-1">Total Quizzes</h3>
+                    <p class="text-sm text-text-secondary">Real-time data</p>
+                </div>
+
+                <!-- Active Users -->
+                <div class="bg-surface p-6 rounded-2xl shadow-card border border-border-light">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-error-light/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <svg class="h-6 w-6 text-error-light" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-heading font-bold text-text-primary" id="active-users">0</span>
+                    </div>
+                    <h3 class="font-medium text-text-primary mb-1">Active Users</h3>
+                    <p class="text-sm text-text-secondary">Real-time data</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabbed Interface -->
+        <section class="bg-surface rounded-2xl shadow-card border border-border-light overflow-hidden">
+            <!-- Tab Navigation -->
+            <div class="border-b border-border-light">
+                <nav class="flex overflow-x-auto">
+                    <button class="tab-btn active px-6 py-4 text-sm font-medium border-b-2 border-primary-600 text-primary-600 whitespace-nowrap" data-tab="user-management">
+                        User Management
+                    </button>
+                    <button class="tab-btn px-6 py-4 text-sm font-medium border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap" data-tab="content-review">
+                        Content Review
+                    </button>
+                    <button class="tab-btn px-6 py-4 text-sm font-medium border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap" data-tab="system-analytics">
+                        System Analytics
+                    </button>
+                    <button class="tab-btn px-6 py-4 text-sm font-medium border-b-2 border-transparent text-text-secondary hover:text-text-primary whitespace-nowrap" data-tab="platform-settings">
+                        Platform Settings
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="p-6">
+                <!-- User Management Tab -->
+                <div id="user-management" class="tab-content">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                        <h3 class="text-xl font-heading font-semibold text-text-primary mb-4 lg:mb-0">User Management</h3>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="relative">
+                                <input type="text" placeholder="Search users..." class="input-field pl-10 w-full sm:w-64" aria-label="Search users">
+                                <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </div>
+                            <select class="input-field" aria-label="Filter users">
+                                <option>All Users</option>
+                                <option>Students</option>
+                                <option>Teachers</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Table View -->
+                    <div class="hidden lg:block overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-secondary-100">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Role</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Registered</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Activity</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-surface divide-y divide-border-light" id="user-table-body">
+                                <!-- Users will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mobile Card View -->
+                    <div class="lg:hidden space-y-4" id="user-mobile-cards">
+                        <!-- Users will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Content Review Tab -->
+                <div id="content-review" class="tab-content hidden">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                        <h3 class="text-xl font-heading font-semibold text-text-primary mb-4 lg:mb-0">Content Review</h3>
+                        <div class="flex gap-4">
+                            <button class="btn-primary">Batch Approve</button>
+                            <select class="input-field" aria-label="Filter content">
+                                <option>All Content</option>
+                                <option>Pending Lessons</option>
+                                <option>Pending Quizzes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Pending Lesson -->
+                        <div class="bg-border-light p-6 rounded-lg">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center mb-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-warning-light/10 text-warning-light mr-3">Pending</span>
+                                        <h4 class="font-medium text-text-primary">Grade 10 Mathematics - Algebra Fundamentals</h4>
+                                    </div>
+                                    <p class="text-sm text-text-secondary mb-2">Submitted by: Rajesh Fernando</p>
+                                    <p class="text-sm text-text-secondary">Uploaded: November 10, 2025</p>
+                                </div>
+                                <div class="flex gap-2 mt-4 lg:mt-0">
+                                    <button class="bg-primary-600 text-white px-4 py-2 rounded text-sm">Preview</button>
+                                    <button class="bg-success-light text-white px-4 py-2 rounded text-sm">Approve</button>
+                                    <button class="bg-error-light text-white px-4 py-2 rounded text-sm">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Quiz -->
+                        <div class="bg-border-light p-6 rounded-lg">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center mb-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-warning-light/10 text-warning-light mr-3">Pending</span>
+                                        <h4 class="font-medium text-text-primary">Grade 8 Science - Chemical Reactions Quiz</h4>
+                                    </div>
+                                    <p class="text-sm text-text-secondary mb-2">Submitted by: Priya Wickramasinghe</p>
+                                    <p class="text-sm text-text-secondary">Uploaded: November 11, 2025</p>
+                                </div>
+                                <div class="flex gap-2 mt-4 lg:mt-0">
+                                    <button class="bg-primary-600 text-white px-4 py-2 rounded text-sm">Preview</button>
+                                    <button class="bg-success-light text-white px-4 py-2 rounded text-sm">Approve</button>
+                                    <button class="bg-error-light text-white px-4 py-2 rounded text-sm">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Analytics Tab -->
+                <div id="system-analytics" class="tab-content hidden">
+                    <h3 class="text-xl font-heading font-semibold text-text-primary mb-6">System Analytics</h3>
+                    
+                    <!-- Analytics Charts -->
+                    <div class="grid lg:grid-cols-2 gap-6 mb-8">
+                        <!-- Usage Statistics Chart -->
+                        <div class="bg-border-light p-6 rounded-lg">
+                            <h4 class="font-medium text-text-primary mb-4">Platform Usage (Last 30 Days)</h4>
+                            <div class="h-64 flex items-end justify-between space-x-2" id="usage-chart">
+                                <div class="bg-primary-600 rounded-t" style="height: 80%; width: 12%"></div>
+                                <div class="bg-primary-600 rounded-t" style="height: 65%; width: 12%"></div>
+                                <div class="bg-primary-600 rounded-t" style="height: 90%; width: 12%"></div>
+                                <div class="bg-primary-600 rounded-t" style="height: 75%; width: 12%"></div>
+                                <div class="bg-primary-600 rounded-t" style="height: 85%; width: 12%"></div>
+                                <div class="bg-primary-600 rounded-t" style="height: 95%; width: 12%"></div>
+                                <div class="bg-primary-600 rounded-t" style="height: 70%; width: 12%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-text-secondary mt-2">
+                                <span>Week 1</span>
+                                <span>Week 2</span>
+                                <span>Week 3</span>
+                                <span>Week 4</span>
+                            </div>
+                        </div>
+
+                        <!-- Popular Subjects -->
+                        <div class="bg-border-light p-6 rounded-lg">
+                            <h4 class="font-medium text-text-primary mb-4">Popular Subjects</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Mathematics</span>
+                                    <div class="flex items-center">
+                                        <div class="w-24 bg-secondary-200 rounded-full h-2 mr-2">
+                                            <div class="bg-primary-600 h-2 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                        <span class="text-sm font-medium text-text-primary">85%</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">Science</span>
+                                    <div class="flex items-center">
+                                        <div class="w-24 bg-secondary-200 rounded-full h-2 mr-2">
+                                            <div class="bg-accent-500 h-2 rounded-full" style="width: 72%"></div>
+                                        </div>
+                                        <span class="text-sm font-medium text-text-primary">72%</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">English</span>
+                                    <div class="flex items-center">
+                                        <div class="w-24 bg-secondary-200 rounded-full h-2 mr-2">
+                                            <div class="bg-warning-light h-2 rounded-full" style="width: 68%"></div>
+                                        </div>
+                                        <span class="text-sm font-medium text-text-primary">68%</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-text-secondary">History</span>
+                                    <div class="flex items-center">
+                                        <div class="w-24 bg-secondary-200 rounded-full h-2 mr-2">
+                                            <div class="bg-error-light h-2 rounded-full" style="width: 54%"></div>
+                                        </div>
+                                        <span class="text-sm font-medium text-text-primary">54%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Export Options -->
+                    <div class="bg-border-light p-6 rounded-lg">
+                        <h4 class="font-medium text-text-primary mb-4">Export Reports</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <button class="bg-primary-600 text-white px-4 py-3 rounded text-sm font-medium">
+                                Export User Data
+                            </button>
+                            <button class="bg-accent-500 text-white px-4 py-3 rounded text-sm font-medium">
+                                Export Performance Report
+                            </button>
+                            <button class="bg-warning-light text-white px-4 py-3 rounded text-sm font-medium">
+                                Export System Analytics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Settings Tab -->
+                <div id="platform-settings" class="tab-content hidden">
+                    <h3 class="text-xl font-heading font-semibold text-text-primary mb-6">Platform Settings</h3>
+                    
+                    <div class="space-y-8">
+                        <!-- Curriculum Settings -->
+                        <div class="bg-border-light p-6 rounded-lg">
+                            <h4 class="font-medium text-text-primary mb-4">Curriculum Configuration</h4>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="academic-year" class="block text-sm font-medium text-text-primary mb-2">Academic Year</label>
+                                    <select id="academic-year" class="input-field w-full" aria-label="Select Academic Year">
+                                        <option>2025</option>
+                                        <option>2024</option>
+                                        <option>2023</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="default-language" class="block text-sm font-medium text-text-primary mb-2">Default Language</label>
+                                    <select id="default-language" class="input-field w-full" aria-label="Select Default Language">
+                                        <option>English</option>
+                                        <option>Sinhala</option>
+                                        <option>Tamil</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grade Level Management -->
+                        <div class="bg-border-light p-6 rounded-lg">
+                            <h4 class="font-medium text-text-primary mb-4">Grade Level Subject Configuration</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-4 bg-surface rounded border">
+                                    <div>
+                                        <h5 class="font-medium text-text-primary">Primary Grades (1-5)</h5>
+                                        <p class="text-sm text-text-secondary">Tamil, English, Sinhala, Mathematics, Religion, Sutradal</p>
+                                    </div>
+                                    <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Edit</button>
+                                </div>
+                                <div class="flex items-center justify-between p-4 bg-surface rounded border">
+                                    <div>
+                                        <h5 class="font-medium text-text-primary">Junior Secondary (6-9)</h5>
+                                        <p class="text-sm text-text-secondary">Core subjects + History, Geography, Civics, ICT, Technology, Science</p>
+                                    </div>
+                                    <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Edit</button>
+                                </div>
+                                <div class="flex items-center justify-between p-4 bg-surface rounded border">
+                                    <div>
+                                        <h5 class="font-medium text-text-primary">Senior Secondary (10-11)</h5>
+                                        <p class="text-sm text-text-secondary">Core subjects + basket subject selection</p>
+                                    </div>
+                                    <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Edit</button>
+                                </div>
+                                <div class="flex items-center justify-between p-4 bg-surface rounded border">
+                                    <div>
+                                        <h5 class="font-medium text-text-primary">Advanced Level (12-13)</h5>
+                                        <p class="text-sm text-text-secondary">Stream-based subject allocation</p>
+                                    </div>
+                                    <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Configuration -->
+                        <div class="bg-border-light p-6 rounded-lg">
+                            <h4 class="font-medium text-text-primary mb-4">System Configuration</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h5 class="font-medium text-text-primary">User Registration</h5>
+                                        <p class="text-sm text-text-secondary">Allow new user registrations</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-secondary-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h5 class="font-medium text-text-primary">Content Auto-Approval</h5>
+                                        <p class="text-sm text-text-secondary">Automatically approve teacher content</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-secondary-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h5 class="font-medium text-text-primary">AI Tutor</h5>
+                                        <p class="text-sm text-text-secondary">Enable AI tutor assistance</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer" checked>
+                                        <div class="w-11 h-6 bg-secondary-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <button class="btn-primary">Save Configuration</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-16 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <svg class="h-10 w-10 text-primary-500" viewBox="0 0 40 40" fill="currentColor">
+                            <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="ml-3 text-xl font-heading font-semibold">EDU-TECH LMS</span>
+                    </div>
+                    <p class="text-secondary-400 mb-6 max-w-md">
+                        Empowering Sri Lankan education with comprehensive digital learning solutions designed for the local curriculum and cultural context.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="landing_page.html" class="text-secondary-400 hover:text-primary-500 transition-smooth">Home</a></li>
+                        <li><a href="user_registration.html" class="text-secondary-400 hover:text-primary-500 transition-smooth">Register</a></li>
+                        <li><a href="user_login.html" class="text-secondary-400 hover:text-primary-500 transition-smooth">Login</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Support</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Admin Links -->
+                <div>
+                    <h4 class="font-heading font-semibold mb-4">Administration</h4>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">System Status</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Documentation</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-secondary-600 mt-12 pt-8 text-center">
+                <p class="text-secondary-400">
+                    © 2025 EDU-TECH LMS. All Rights Reserved. | Administrative Control Panel
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'border-primary-600', 'text-primary-600');
+                        btn.classList.add('border-transparent', 'text-text-secondary');
+                    });
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+
+                    // Add active class to clicked button and show corresponding content
+                    this.classList.add('active', 'border-primary-600', 'text-primary-600');
+                    this.classList.remove('border-transparent', 'text-text-secondary');
+                    document.getElementById(targetTab).classList.remove('hidden');
+
+                    // Load data for the active tab
+                    loadTabData(targetTab);
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Confirmation dialogs for user actions
+            document.addEventListener('click', function(e) {
+                if (e.target.textContent === 'Delete') {
+                    e.preventDefault();
+                    if (confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+                        // Handle delete action
+                        console.log('User deleted');
+                    }
+                } else if (e.target.textContent === 'Suspend') {
+                    e.preventDefault();
+                    if (confirm('Are you sure you want to suspend this user?')) {
+                        // Handle suspend action
+                        console.log('User suspended');
+                    }
+                } else if (e.target.textContent === 'Reject') {
+                    e.preventDefault();
+                    if (confirm('Are you sure you want to reject this content?')) {
+                        // Handle reject action
+                        console.log('Content rejected');
+                    }
+                }
+            });
+
+            // Toggle switches functionality
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    console.log(`Setting ${this.closest('.flex').querySelector('h5').textContent} changed to: ${this.checked}`);
+                });
+            });
+
+            // Load initial data for system overview
+            loadSystemOverview();
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-elevated');
+            } else {
+                nav.classList.remove('shadow-elevated');
+            }
+        });
+
+        // Search functionality for users
+        document.querySelector('input[placeholder="Search users..."]').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            filterUsers(searchTerm);
+        });
+
+        // Export functionality
+        document.querySelectorAll('button[class*="Export"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const reportType = this.textContent.trim();
+                console.log(`Exporting ${reportType}...`);
+                // Implement export logic here
+            });
+        });
+
+        // Function to load system overview data
+        async function loadSystemOverview() {
+            try {
+                const [usersResponse, lessonsResponse, quizzesResponse] = await Promise.all([
+                    fetch('http://localhost:5000/api/users'),
+                    fetch('http://localhost:5000/api/lessons'),
+                    fetch('http://localhost:5000/api/quizzes')
+                ]);
+
+                if (usersResponse.ok) {
+                    const users = await usersResponse.json();
+                    document.querySelector('.grid.md\\:grid-cols-2.lg\\:grid-cols-4 > div:nth-child(1) span.font-heading').textContent = users.length;
+                }
+
+                if (lessonsResponse.ok) {
+                    const lessons = await lessonsResponse.json();
+                    document.querySelector('.grid.md\\:grid-cols-2.lg\\:grid-cols-4 > div:nth-child(2) span.font-heading').textContent = lessons.length;
+                }
+
+                if (quizzesResponse.ok) {
+                    const quizzes = await quizzesResponse.json();
+                    document.querySelector('.grid.md\\:grid-cols-2.lg\\:grid-cols-4 > div:nth-child(3) span.font-heading').textContent = quizzes.length;
+                }
+            } catch (error) {
+                console.error('Error loading system overview:', error);
+            }
+        }
+
+        // Function to load data for specific tabs
+        async function loadTabData(tabId) {
+            if (tabId === 'user-management') {
+                await loadUsers();
+            } else if (tabId === 'content-review') {
+                await loadContentReview();
+            } else if (tabId === 'system-analytics') {
+                await loadAnalytics();
+            }
+        }
+
+        // Load users for user management tab
+        async function loadUsers() {
+            try {
+                const response = await fetch('http://localhost:5000/api/users');
+                if (response.ok) {
+                    const users = await response.json();
+                    populateUserTable(users);
+                }
+            } catch (error) {
+                console.error('Error loading users:', error);
+            }
+        }
+
+        // Populate user table
+        function populateUserTable(users) {
+            const tbody = document.querySelector('#user-management tbody');
+            tbody.innerHTML = '';
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_${Math.random().toString(36).substr(2, 9)}-1762273834802.png"
+                                 alt="Profile picture of ${user.name}"
+                                 class="w-10 h-10 rounded-full object-cover mr-3"
+                                 loading="lazy"
+                                 onerror="this.src='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2'; this.onerror=null;">
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">${user.name}</div>
+                                <div class="text-sm text-text-secondary">${user.email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-accent-100 text-accent-500">${user.role}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-success-light/10 text-success-light">${user.status}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">Oct 15, 2025</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">2 hours ago</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <div class="flex space-x-2">
+                            <button class="text-primary-600 hover:text-primary-700">Edit</button>
+                            <button class="text-warning-light hover:text-warning">Suspend</button>
+                            <button class="text-error-light hover:text-error">Delete</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Filter users based on search term
+        function filterUsers(searchTerm) {
+            const rows = document.querySelectorAll('#user-management tbody tr');
+            rows.forEach(row => {
+                const name = row.querySelector('.text-sm.font-medium').textContent.toLowerCase();
+                const email = row.querySelector('.text-sm.text-text-secondary').textContent.toLowerCase();
+                if (name.includes(searchTerm) || email.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Load content for review
+        async function loadContentReview() {
+            try {
+                const [lessonsResponse, quizzesResponse] = await Promise.all([
+                    fetch('http://localhost:5000/api/lessons'),
+                    fetch('http://localhost:5000/api/quizzes')
+                ]);
+
+                const container = document.querySelector('#content-review .space-y-4');
+                container.innerHTML = '';
+
+                if (lessonsResponse.ok) {
+                    const lessons = await lessonsResponse.json();
+                    lessons.filter(l => l.status === 'pending').forEach(lesson => {
+                        const item = document.createElement('div');
+                        item.className = 'bg-border-light p-6 rounded-lg';
+                        item.innerHTML = `
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center mb-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-warning-light/10 text-warning-light mr-3">Pending</span>
+                                        <h4 class="font-medium text-text-primary">${lesson.title}</h4>
+                                    </div>
+                                    <p class="text-sm text-text-secondary mb-2">Subject: ${lesson.subject} | Grade: ${lesson.grade}</p>
+                                    <p class="text-sm text-text-secondary">Uploaded: November 10, 2025</p>
+                                </div>
+                                <div class="flex gap-2 mt-4 lg:mt-0">
+                                    <button class="bg-primary-600 text-white px-4 py-2 rounded text-sm">Preview</button>
+                                    <button class="bg-success-light text-white px-4 py-2 rounded text-sm">Approve</button>
+                                    <button class="bg-error-light text-white px-4 py-2 rounded text-sm">Reject</button>
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(item);
+                    });
+                }
+
+                if (quizzesResponse.ok) {
+                    const quizzes = await quizzesResponse.json();
+                    quizzes.filter(q => q.status === 'pending').forEach(quiz => {
+                        const item = document.createElement('div');
+                        item.className = 'bg-border-light p-6 rounded-lg';
+                        item.innerHTML = `
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center mb-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-warning-light/10 text-warning-light mr-3">Pending</span>
+                                        <h4 class="font-medium text-text-primary">${quiz.title}</h4>
+                                    </div>
+                                    <p class="text-sm text-text-secondary mb-2">Subject: ${quiz.subject} | Grade: ${quiz.grade}</p>
+                                    <p class="text-sm text-text-secondary">Uploaded: November 11, 2025</p>
+                                </div>
+                                <div class="flex gap-2 mt-4 lg:mt-0">
+                                    <button class="bg-primary-600 text-white px-4 py-2 rounded text-sm">Preview</button>
+                                    <button class="bg-success-light text-white px-4 py-2 rounded text-sm">Approve</button>
+                                    <button class="bg-error-light text-white px-4 py-2 rounded text-sm">Reject</button>
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(item);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading content review:', error);
+            }
+        }
+
+        // Load analytics data
+        async function loadAnalytics() {
+            try {
+                const [usersResponse, lessonsResponse, quizzesResponse] = await Promise.all([
+                    fetch('http://localhost:5000/api/users'),
+                    fetch('http://localhost:5000/api/lessons'),
+                    fetch('http://localhost:5000/api/quizzes')
+                ]);
+
+                if (usersResponse.ok && lessonsResponse.ok && quizzesResponse.ok) {
+                    const users = await usersResponse.json();
+                    const lessons = await lessonsResponse.json();
+                    const quizzes = await quizzesResponse.json();
+
+                    // Update popular subjects (simplified calculation)
+                    const subjects = {};
+                    lessons.forEach(l => subjects[l.subject] = (subjects[l.subject] || 0) + 1);
+                    const sortedSubjects = Object.entries(subjects).sort((a, b) => b[1] - a[1]).slice(0, 4);
+
+                    const subjectBars = document.querySelectorAll('.space-y-3 > div');
+                    subjectBars.forEach((bar, index) => {
+                        if (sortedSubjects[index]) {
+                            const [subject, count] = sortedSubjects[index];
+                            const percentage = Math.round((count / lessons.length) * 100);
+                            bar.querySelector('.text-sm.text-text-secondary').textContent = subject;
+                            bar.querySelector('.bg-primary-600').style.width = `${percentage}%`;
+                            bar.querySelector('.text-sm.font-medium').textContent = `${percentage}%`;
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+            }
+        }
+    </script>
+</body>
+</html>

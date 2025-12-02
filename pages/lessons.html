@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessons - EDU-TECH LMS</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="../landing_page.html" class="flex items-center">
+                        <svg class="h-10 w-10 text-primary-600" viewBox="0 0 40 40" fill="currentColor">
+                            <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="ml-3 text-xl font-heading font-semibold text-text-primary">EDU-TECH LMS</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="lessons.html" class="text-primary-600 font-medium">Lessons</a>
+                    <a href="quizzes.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Quizzes</a>
+                    <a href="ai_tutor.html" class="text-text-secondary hover:text-primary-600 transition-smooth">AI Tutor</a>
+                    <a href="profile.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Profile</a>
+                    <button id="logoutBtn" class="btn-secondary">Logout</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary-600 p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="lessons.html" class="text-primary-600 font-medium px-2 py-1">Lessons</a>
+                    <a href="quizzes.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Quizzes</a>
+                    <a href="ai_tutor.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">AI Tutor</a>
+                    <a href="profile.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Profile</a>
+                    <button id="mobile-logout" class="btn-secondary w-full text-left px-2 py-1">Logout</button>
+                </div>
+            </div>
+        </div>

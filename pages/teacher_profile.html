@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - EDU-TECH LMS</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="../landing_page.html" class="flex items-center">
+                        <svg class="h-10 w-10 text-primary-600" viewBox="0 0 40 40" fill="currentColor">
+                            <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="ml-3 text-xl font-heading font-semibold text-text-primary">EDU-TECH LMS</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="teacher_dashboard.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Dashboard</a>
+                    <a href="javascript:void(0)" onclick="switchToLessonsTab()" class="text-text-secondary hover:text-primary-600 transition-smooth">Lessons</a>
+                    <a href="javascript:void(0)" onclick="switchToReportsTab()" class="text-text-secondary hover:text-primary-600 transition-smooth">Reports</a>
+                    <a href="teacher_profile.html" class="text-primary-600 border-b-2 border-primary-600">Profile</a>
+                    <button id="logoutBtn" class="btn-secondary">Logout</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary-600 p-2" aria-label="Toggle mobile menu">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="teacher_dashboard.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Dashboard</a>
+                    <a href="javascript:void(0)" onclick="switchToLessonsTab()" class="text-text-secondary hover:text-primary-600 px-2 py-1">Lessons</a>
+                    <a href="javascript:void(0)" onclick="switchToReportsTab()" class="text-text-secondary hover:text-primary-600 px-2 py-1">Reports</a>
+                    <a href="teacher_profile.html" class="text-primary-600 px-2 py-1">Profile</a>
+                    <button id="mobile-logout" class="btn-secondary w-full text-left px-2 py-1">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8">
+        <!-- Header Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-heading font-bold text-text-primary mb-2">My Profile</h1>
+                    <p class="text-text-secondary">Manage your account information and preferences</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="edit-profile-btn" class="btn-primary">
+                        <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                        </svg>
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Content -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Profile Overview -->
+                <div class="lg:col-span-1">
+                    <div class="bg-surface rounded-2xl p-8 shadow-card">
+                        <div class="text-center mb-6">
+                            <h2 class="text-xl font-heading font-bold text-text-primary mb-1" id="profile-name">Teacher Name</h2>
+                            <p class="text-text-secondary" id="profile-role">Teacher</p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between py-2 border-b border-secondary-200">
+                                <span class="text-text-secondary">Email</span>
+                                <span class="font-medium text-text-primary" id="profile-email">teacher@example.com</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2 border-b border-secondary-200">
+                                <span class="text-text-secondary">Member Since</span>
+                                <span class="font-medium text-text-primary" id="profile-joined">Jan 2025</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-text-secondary">Status</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-100 text-success-800">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="lg:col-span-2">
+                    <!-- Personal Information -->
+                    <div class="bg-surface rounded-2xl p-8 shadow-card mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-heading font-bold text-text-primary">Personal Information</h3>
+                            <button id="edit-personal-btn" class="text-primary-600 hover:text-primary-700 text-sm font-medium hidden">
+                                <svg class="h-4 w-4 mr-1 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                                Edit
+                            </button>
+                        </div>
+
+                        <form id="personal-info-form" class="space-y-2">
+                            <div class="gap-2">
+                                <div>
+                                    <label for="username" class="block font-medium text-text-primary">User Name</label>
+                            <input type="text" id="username" name="username" class="input-field" readonly title="User Name" placeholder="User Name">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block font-medium text-text-primary">Email Address</label>
+                            <input type="email" id="email" name="email" class="input-field" readonly title="Email Address" placeholder="Email Address">
+                            </div>
+
+                            <div class="flex items-center justify-end space-x-4 pt-4 border-t border-secondary-200">
+                                <button type="button" id="cancel-personal-btn" class="btn-secondary hidden">Cancel</button>
+                                <button type="submit" id="save-personal-btn" class="btn-primary hidden">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="bg-surface rounded-2xl p-8 shadow-card mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-heading font-bold text-text-primary">Security Settings</h3>
+                            <button id="change-password-btn" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                                <svg class="h-4 w-4 mr-1 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                                </svg>
+                                Change Password
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between py-3 border-b border-secondary-200">
+                                <div>
+                                    <div class="font-medium text-text-primary">Password</div>
+                                    <div class="text-sm text-text-secondary">Last changed 3 months ago</div>
+                                </div>
+                                <div class="text-sm text-text-secondary">••••••••</div>
+                            </div>
+                            <div class="flex items-center justify-between py-3">
+                                <div>
+                                    <div class="font-medium text-text-primary">Two-Factor Authentication</div>
+                                    <div class="text-sm text-text-secondary">Add an extra layer of security</div>
+                                </div>
+                                <button class="text-primary-600 hover:text-primary-700 text-sm font-medium">Enable</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings -->
+                    <div class="bg-surface rounded-2xl p-8 shadow-card">
+                        <h3 class="text-xl font-heading font-bold text-text-primary mb-6">Account Settings</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-medium text-text-primary">Email Notifications</div>
+                                    <div class="text-sm text-text-secondary">Receive updates about your classes and students</div>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="email-notifications" class="sr-only peer">
+                                    <div class="w-11 h-6 bg-secondary-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                </label>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-medium text-text-primary">Student Progress Alerts</div>
+                                    <div class="text-sm text-text-secondary">Get notified about student performance changes</div>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="progress-alerts" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-secondary-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                </label>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-medium text-text-primary">Lesson Submission Reminders</div>
+                                    <div class="text-sm text-text-secondary">Reminders for pending lesson reviews</div>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="submission-reminders" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-secondary-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Change Password Modal -->
+    <div id="password-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-surface rounded-2xl p-8 max-w-md w-full">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-heading font-bold text-text-primary">Change Password</h3>
+                    <button id="close-password-modal" class="text-text-secondary hover:text-text-primary" aria-label="Close password change modal">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <form id="password-form" class="space-y-6">
+                    <div>
+                        <label for="current-password" class="block text-sm font-medium text-text-primary mb-2">Current Password</label>
+                        <input type="password" id="current-password" name="current_password" class="input-field" placeholder="Enter your current password" title="Current Password" required>
+                    </div>
+
+                    <div>
+                        <label for="new-password" class="block text-sm font-medium text-text-primary mb-2">New Password</label>
+                        <input type="password" id="new-password" name="new_password" class="input-field" placeholder="Enter a new password" title="New Password" required>
+                        <p class="text-xs text-text-secondary mt-1">Must be at least 8 characters long</p>
+                    </div>
+
+                    <div>
+                        <label for="confirm-password" class="block text-sm font-medium text-text-primary mb-2">Confirm New Password</label>
+                        <input type="password" id="confirm-password" name="confirm_password" class="input-field" placeholder="Confirm your new password" title="Confirm New Password" required>
+                    </div>
+
+                    <div class="flex items-center justify-end space-x-4 pt-4 border-t border-secondary-200">
+                        <button type="button" id="cancel-password-btn" class="btn-secondary">Cancel</button>
+                        <button type="submit" class="btn-primary">Update Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <svg class="h-8 w-8 text-primary-500" viewBox="0 0 40 40" fill="currentColor">
+                        <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                    </svg>
+                    <span class="ml-3 text-lg font-heading font-semibold">EDU-TECH LMS</span>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Terms of Service</a>
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Support</a>
+                </div>
+            </div>
+            <div class="border-t border-secondary-600 mt-6 pt-6 text-center">
+                <p class="text-secondary-400 text-sm">
+                    © 2025 EDU-TECH LMS. All Rights Reserved. | Designed for Sri Lankan Education System
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/app.js"></script>
+    <script>
+        // Global variables
+        let currentUser = null;
+        let isEditing = false;
+
+        // DOM elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const mobileLogout = document.getElementById('mobile-logout');
+        const editProfileBtn = document.getElementById('edit-profile-btn');
+        const editPersonalBtn = document.getElementById('edit-personal-btn');
+        const cancelPersonalBtn = document.getElementById('cancel-personal-btn');
+        const savePersonalBtn = document.getElementById('save-personal-btn');
+        const personalInfoForm = document.getElementById('personal-info-form');
+        const changePasswordBtn = document.getElementById('change-password-btn');
+        const passwordModal = document.getElementById('password-modal');
+        const closePasswordModal = document.getElementById('close-password-modal');
+        const cancelPasswordBtn = document.getElementById('cancel-password-btn');
+        const passwordForm = document.getElementById('password-form');
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async function() {
+            await initializePage();
+        });
+
+        async function initializePage() {
+            try {
+                // Check authentication
+                const sessionData = localStorage.getItem('edutech_session') || sessionStorage.getItem('edutech_session');
+                if (!sessionData) {
+                    window.location.href = 'user_login.html';
+                    return;
+                }
+
+                const session = JSON.parse(sessionData);
+                currentUser = session.user;
+
+                if (!currentUser || currentUser.role !== 'teacher') {
+                    window.location.href = 'user_login.html';
+                    return;
+                }
+
+                // Load user profile data
+                await loadProfileData();
+
+            } catch (error) {
+                console.error('Page initialization failed:', error);
+                EDUApp.showAlert('Failed to load profile', 'error');
+            }
+        }
+
+        async function loadProfileData() {
+            try {
+                // Update profile overview
+                const profileNameEl = document.getElementById('profile-name');
+                if(profileNameEl) profileNameEl.textContent = currentUser.name || 'Teacher Name';
+                const profileRoleEl = document.getElementById('profile-role');
+                if(profileRoleEl) profileRoleEl.textContent = 'Teacher';
+                const profileSubjectEl = document.getElementById('profile-subject');
+                if(profileSubjectEl) profileSubjectEl.textContent = currentUser.subject || 'Mathematics';
+                const profileEmailEl = document.getElementById('profile-email');
+                if(profileEmailEl) profileEmailEl.textContent = currentUser.email || 'teacher@example.com';
+                const profileJoinedEl = document.getElementById('profile-joined');
+                if(profileJoinedEl) profileJoinedEl.textContent = new Date(currentUser.created_at || Date.now()).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+                // Update form fields
+                const firstNameEl = document.getElementById('first-name');
+                if(firstNameEl) firstNameEl.value = currentUser.first_name || '';
+                const lastNameEl = document.getElementById('last-name');
+                if(lastNameEl) lastNameEl.value = currentUser.last_name || '';
+                const emailEl = document.getElementById('email');
+                if(emailEl) emailEl.value = currentUser.email || '';
+                const subjectEl = document.getElementById('subject');
+                if(subjectEl) subjectEl.value = currentUser.subject || '';
+
+                // Handle grades taught display
+                updateGradesDisplay();
+
+            } catch (error) {
+                console.error('Failed to load profile data:', error);
+            }
+        }
+
+        function updateGradesDisplay() {
+            const gradesDisplay = document.getElementById('grades-display');
+            if(gradesDisplay) {
+                const grades = currentUser.grades_taught ? currentUser.grades_taught.split(',').join(', ') : 'No grades assigned';
+                gradesDisplay.textContent = grades;
+            }
+        }
+
+        function toggleEditMode(enable) {
+            isEditing = enable;
+
+            const readonlyFields = ['first-name', 'last-name', 'email'];
+            const disabledFields = ['subject'];
+
+            readonlyFields.forEach(id => {
+                document.getElementById(id).readOnly = !enable;
+            });
+
+            disabledFields.forEach(id => {
+                document.getElementById(id).disabled = !enable;
+            });
+
+            // Show/hide buttons
+            if (enable) {
+                editPersonalBtn.classList.add('hidden');
+                cancelPersonalBtn.classList.remove('hidden');
+                savePersonalBtn.classList.remove('hidden');
+                editProfileBtn.textContent = 'Cancel Editing';
+                editProfileBtn.classList.remove('btn-primary');
+                editProfileBtn.classList.add('btn-secondary');
+            } else {
+                editPersonalBtn.classList.remove('hidden');
+                cancelPersonalBtn.classList.add('hidden');
+                savePersonalBtn.classList.add('hidden');
+                editProfileBtn.textContent = 'Edit Profile';
+                editProfileBtn.classList.remove('btn-secondary');
+                editProfileBtn.classList.add('btn-primary');
+            }
+        }
+
+        // Event listeners
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            EDUApp.logout();
+        });
+
+        mobileLogout.addEventListener('click', function() {
+            EDUApp.logout();
+        });
+
+        editProfileBtn.addEventListener('click', function() {
+            toggleEditMode(!isEditing);
+        });
+
+        editPersonalBtn.addEventListener('click', function() {
+            toggleEditMode(true);
+        });
+
+        cancelPersonalBtn.addEventListener('click', function() {
+            toggleEditMode(false);
+            // Reset form values
+            loadProfileData();
+        });
+
+        personalInfoForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            try {
+                // Update user data
+                const updatedUser = await EDUApp.updateProfile(data);
+                currentUser = updatedUser;
+
+                // Update session
+                const sessionData = JSON.parse(localStorage.getItem('edutech_session') || sessionStorage.getItem('edutech_session'));
+                sessionData.user = updatedUser;
+                localStorage.setItem('edutech_session', JSON.stringify(sessionData));
+
+                toggleEditMode(false);
+                await loadProfileData();
+                EDUApp.showAlert('Profile updated successfully', 'success');
+
+            } catch (error) {
+                console.error('Failed to update profile:', error);
+                EDUApp.showAlert('Failed to update profile', 'error');
+            }
+        });
+
+        changePasswordBtn.addEventListener('click', function() {
+            passwordModal.classList.remove('hidden');
+        });
+
+        closePasswordModal.addEventListener('click', function() {
+            passwordModal.classList.add('hidden');
+            passwordForm.reset();
+        });
+
+        cancelPasswordBtn.addEventListener('click', function() {
+            passwordModal.classList.add('hidden');
+            passwordForm.reset();
+        });
+
+        passwordForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            if (data.new_password !== data.confirm_password) {
+                EDUApp.showAlert('Passwords do not match', 'error');
+                return;
+            }
+
+            try {
+                await EDUApp.changePassword(data);
+                passwordModal.classList.add('hidden');
+                passwordForm.reset();
+                EDUApp.showAlert('Password changed successfully', 'success');
+
+            } catch (error) {
+                console.error('Failed to change password:', error);
+                EDUApp.showAlert('Failed to change password', 'error');
+            }
+        });
+
+        // Settings toggles
+        document.getElementById('email-notifications').addEventListener('change', function() {
+            // Handle email notifications setting
+            console.log('Email notifications:', this.checked);
+        });
+
+        document.getElementById('progress-alerts').addEventListener('change', function() {
+            // Handle progress alerts setting
+            console.log('Progress alerts:', this.checked);
+        });
+
+        document.getElementById('submission-reminders').addEventListener('change', function() {
+            // Handle submission reminders setting
+            console.log('Submission reminders:', this.checked);
+        });
+    </script>
+</body>
+</html>

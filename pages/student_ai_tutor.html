@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor - EDU-TECH LMS</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="../landing_page.html" class="flex items-center">
+                        <svg class="h-10 w-10 text-primary-600" viewBox="0 0 40 40" fill="currentColor">
+                            <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="ml-3 text-xl font-heading font-semibold text-text-primary">EDU-TECH LMS</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="student_dashboard.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Dashboard</a>
+                    <a href="student_lessons.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Lessons</a>
+                    <a href="student_quizzes.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Quizzes</a>
+                    <a href="student_ai_tutor.html" class="text-primary-600 border-b-2 border-primary-600">AI Tutor</a>
+                    <a href="student_profile.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Profile</a>
+                    <button id="logoutBtn" class="btn-secondary">Logout</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary-600 p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="student_dashboard.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Dashboard</a>
+                    <a href="student_lessons.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Lessons</a>
+                    <a href="student_quizzes.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Quizzes</a>
+                    <a href="student_ai_tutor.html" class="text-primary-600 px-2 py-1">AI Tutor</a>
+                    <a href="student_profile.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Profile</a>
+                    <button id="mobile-logout" class="btn-secondary w-full text-left px-2 py-1">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8">
+        <!-- Header Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="text-center">
+                <h1 class="text-3xl font-heading font-bold text-text-primary mb-2">AI Tutor</h1>
+                <p class="text-text-secondary">Get instant help with your studies from our intelligent assistant</p>
+            </div>
+        </section>
+
+        <!-- AI Tutor Section -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-surface rounded-2xl shadow-card p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                        <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-heading font-bold text-text-primary">AI Study Assistant</h2>
+                        <p class="text-text-secondary">Ask me anything about your studies</p>
+                    </div>
+                </div>
+
+                <!-- Chat Container -->
+                <div id="chat-container" class="space-y-4 mb-6 max-h-96 overflow-y-auto">
+                    <div class="bg-primary-50 rounded-lg p-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                                <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-text-primary">Hello! I'm your AI tutor. I can help you with:</p>
+                                <ul class="text-text-secondary mt-2 space-y-1">
+                                    <li>• Explaining difficult concepts</li>
+                                    <li>• Answering questions about your lessons</li>
+                                    <li>• Providing study tips and strategies</li>
+                                    <li>• Helping with homework problems</li>
+                                    <li>• Clarifying quiz questions</li>
+                                </ul>
+                                <p class="text-text-primary mt-2">What would you like to learn about today?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Section -->
+                <div class="flex space-x-4">
+                    <input
+                        type="text"
+                        id="ai-query"
+                        class="input-field flex-1"
+                        placeholder="Ask a question about your studies..."
+                        maxlength="500"
+                    >
+                    <button id="ask-ai-btn" class="btn-primary px-6">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Quick Questions -->
+                <div class="mt-6">
+                    <p class="text-sm text-text-secondary mb-3">Quick questions:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="quick-question-btn btn-outline text-sm px-3 py-1" data-question="What is photosynthesis?">
+                            What is photosynthesis?
+                        </button>
+                        <button class="quick-question-btn btn-outline text-sm px-3 py-1" data-question="How do I solve quadratic equations?">
+                            How do I solve quadratic equations?
+                        </button>
+                        <button class="quick-question-btn btn-outline text-sm px-3 py-1" data-question="Explain the water cycle">
+                            Explain the water cycle
+                        </button>
+                        <button class="quick-question-btn btn-outline text-sm px-3 py-1" data-question="What are the parts of a cell?">
+                            What are the parts of a cell?
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <svg class="h-8 w-8 text-primary-500" viewBox="0 0 40 40" fill="currentColor">
+                        <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                    </svg>
+                    <span class="ml-3 text-lg font-heading font-semibold">EDU-TECH LMS</span>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Terms of Service</a>
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Support</a>
+                </div>
+            </div>
+            <div class="border-t border-secondary-600 mt-6 pt-6 text-center">
+                <p class="text-secondary-400 text-sm">
+                    © 2025 EDU-TECH LMS. All Rights Reserved. | Designed for Sri Lankan Education System
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/app.js"></script>
+    <script>
+        // Global variables
+        let currentUser = null;
+
+        // DOM elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const mobileLogout = document.getElementById('mobile-logout');
+        const aiQueryInput = document.getElementById('ai-query');
+        const askAiBtn = document.getElementById('ask-ai-btn');
+        const chatContainer = document.getElementById('chat-container');
+        const quickQuestionBtns = document.querySelectorAll('.quick-question-btn');
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async function() {
+            await initializePage();
+        });
+
+        async function initializePage() {
+            try {
+                // Check authentication
+                const sessionData = localStorage.getItem('edutech_session') || sessionStorage.getItem('edutech_session');
+                if (!sessionData) {
+                    window.location.href = 'user_login.html';
+                    return;
+                }
+
+                const session = JSON.parse(sessionData);
+                currentUser = session.user;
+
+                if (!currentUser || currentUser.role !== 'student') {
+                    window.location.href = 'user_login.html';
+                    return;
+                }
+
+            } catch (error) {
+                console.error('Page initialization failed:', error);
+                EDUApp.showAlert('Failed to load AI tutor', 'error');
+            }
+        }
+
+        function addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = sender === 'user' ? 'bg-primary-600 rounded-lg p-4 text-white' : 'bg-secondary-50 rounded-lg p-4';
+
+            messageDiv.innerHTML = `
+                <div class="flex items-start">
+                    ${sender === 'ai' ? `
+                        <div class="bg-primary-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                            <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                    ` : ''}
+                    <div class="flex-1">
+                        <p class="${sender === 'user' ? 'text-white' : 'text-text-primary'}">${message}</p>
+                    </div>
+                </div>
+            `;
+
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        async function askAI(question) {
+            // Add user message to chat
+            addMessageToChat(question, 'user');
+
+            // Clear input
+            aiQueryInput.value = '';
+
+            // Set loading state
+            askAiBtn.disabled = true;
+            askAiBtn.innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>';
+
+            try {
+                const response = await EDUApp.getAITutorResponse(question);
+                addMessageToChat(response, 'ai');
+            } catch (error) {
+                addMessageToChat('Sorry, I\'m having trouble answering that right now. Please try again later.', 'ai');
+            } finally {
+                askAiBtn.disabled = false;
+                askAiBtn.innerHTML = '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+            }
+        }
+
+        // Event listeners
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            EDUApp.logout();
+        });
+
+        mobileLogout.addEventListener('click', function() {
+            EDUApp.logout();
+        });
+
+        askAiBtn.addEventListener('click', async function() {
+            const query = aiQueryInput.value.trim();
+            if (!query) {
+                EDUApp.showAlert('Please enter a question', 'error');
+                return;
+            }
+            await askAI(query);
+        });
+
+        aiQueryInput.addEventListener('keypress', async function(e) {
+            if (e.key === 'Enter') {
+                const query = aiQueryInput.value.trim();
+                if (query) {
+                    await askAI(query);
+                }
+            }
+        });
+
+        quickQuestionBtns.forEach(btn => {
+            btn.addEventListener('click', async function() {
+                const question = this.dataset.question;
+                await askAI(question);
+            });
+        });
+    </script>
+</body>
+</html>

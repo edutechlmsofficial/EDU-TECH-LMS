@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - EDU-TECH LMS</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  </head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                <a href="/landing_page.html" class="flex items-center">
+                    <svg class="h-10 w-10 text-primary-600" viewBox="0 0 40 40" fill="currentColor">
+                        <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                    </svg>
+                    <span class="ml-3 text-xl font-heading font-semibold text-text-primary">EDU-TECH LMS</span>
+                </a>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="./landing_page.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Home</a>
+                    <a href="./user_login.html" class="text-primary-600 hover:text-primary-700 font-medium transition-smooth">Login</a>
+                    <a href="./admin_control_panel.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Admin</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary-600 p-2" aria-label="Toggle mobile menu">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="./landing_page.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Home</a>
+                    <a href="./user_login.html" class="text-primary-600 hover:text-primary-700 font-medium px-2 py-1">Login</a>
+                    <a href="./admin_control_panel.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Admin</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="py-12 lg:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-3xl lg:text-4xl font-heading font-bold text-text-primary mb-4">
+                    Create Your Account
+                </h1>
+                <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+                    Join thousands of Sri Lankan students and teachers on our comprehensive learning platform
+                </p>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="bg-surface rounded-2xl shadow-card p-8 lg:p-12">
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-2">
+                        <span id="progress-text" class="text-sm text-text-secondary">Step 1 of 2 - Basic Information</span>
+                    </div>
+                    <div class="w-full bg-border rounded-full h-2">
+                        <div id="progress-bar" class="bg-primary-600 h-2 rounded-full transition-all duration-300" style="width: 50%"></div>
+                    </div>
+                </div>
+
+                <form id="registration-form" class="space-y-8">
+                    <!-- Step 1: Basic Information -->
+                    <div id="step-1" class="registration-step">
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-heading font-semibold text-text-primary mb-2">Basic Information</h2>
+                            <p class="text-text-secondary">Let's start with your basic details</p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Username -->
+                            <div>
+                                <label for="username" class="block text-sm font-medium text-text-primary mb-2">
+                                    Username <span class="text-error-light">*</span>
+                                </label>
+                                <input type="text" id="username" name="username" required autocomplete="username"
+                                       class="input-field w-full"
+                                       placeholder="Enter your username" title="Username">
+                                <div class="error-message hidden text-error-light text-sm mt-1" id="username-error"></div>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+                                    Email Address <span class="text-error-light">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required autocomplete="email"
+                                       class="input-field w-full"
+                                       placeholder="your.email@example.com" title="Email Address">
+                                <div class="error-message hidden text-error-light text-sm mt-1" id="email-error"></div>
+                            </div>
+
+                            <!-- Password -->
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-text-primary mb-2">
+                                    Password <span class="text-error-light">*</span>
+                                </label>
+                                <div class="relative">
+                                    <input type="password" id="password" name="password" required autocomplete="new-password"
+                                           class="input-field w-full pr-12"
+                                           placeholder="Create a strong password" title="Password">
+                                    <button type="button" id="toggle-password" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-text-primary" aria-label="Toggle password visibility">
+                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="error-message hidden text-error-light text-sm mt-1" id="password-error"></div>
+                                <div class="text-xs text-text-secondary mt-1">
+                                    Password must be at least 8 characters long
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div>
+                                <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">
+                                    Confirm Password <span class="text-error-light">*</span>
+                                </label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="new-password"
+                                       class="input-field w-full"
+                                       placeholder="Confirm your password" title="Confirm Password">
+                                <div class="error-message hidden text-error-light text-sm mt-1" id="confirmPassword-error"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Role Selection -->
+                    <div id="step-2" class="registration-step hidden">
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-heading font-semibold text-text-primary mb-2">Select Your Role</h2>
+                            <p class="text-text-secondary">Choose how you'll be using the platform</p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Student Role -->
+                            <div class="role-card border-2 border-border rounded-xl p-6 cursor-pointer transition-smooth hover:border-primary-600" data-role="student">
+                                <div class="flex items-start">
+                                    <input type="radio" id="student" name="role" value="student" class="mt-1 mr-4">
+                                    <label for="student" class="flex-1 cursor-pointer">
+                                        <div class="flex items-center mb-3">
+                                            <div class="bg-primary-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                                <svg class="h-6 w-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-lg font-heading font-semibold text-text-primary">Student</h3>
+                                        </div>
+                                        <p class="text-text-secondary text-sm leading-relaxed">
+                                            Access grade-appropriate lessons, take quizzes, track your progress, and get help from our AI tutor.
+                                        </p>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Teacher Role -->
+                            <div class="role-card border-2 border-border rounded-xl p-6 cursor-pointer transition-smooth hover:border-primary-600" data-role="teacher">
+                                <div class="flex items-start">
+                                    <input type="radio" id="teacher" name="role" value="teacher" class="mt-1 mr-4">
+                                    <label for="teacher" class="flex-1 cursor-pointer">
+                                        <div class="flex items-center mb-3">
+                                            <div class="bg-accent-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                                <svg class="h-6 w-6 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-lg font-heading font-semibold text-text-primary">Teacher</h3>
+                                        </div>
+                                        <p class="text-text-secondary text-sm leading-relaxed">
+                                            Upload lessons, create quizzes, manage student progress, and access comprehensive analytics.
+                                        </p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Grade & Subject Selection -->
+                    <div id="step-3" class="registration-step hidden">
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-heading font-semibold text-text-primary mb-2">Academic Details</h2>
+                            <p class="text-text-secondary">Select your grade and subjects of interest</p>
+                        </div>
+                        
+                        <!-- Student Grade Selection -->
+                        <div id="student-details" class="hidden">
+                            <div class="mb-6">
+                                <label for="grade" class="block text-sm font-medium text-text-primary mb-2">
+                                    Select Your Grade <span class="text-error-light">*</span>
+                                </label>
+                                <select id="grade" name="grade" class="input-field w-full md:w-1/2" title="Select Your Grade">
+                                    <option value="">Choose your grade...</option>
+                                    <option value="1">Grade 1</option>
+                                    <option value="2">Grade 2</option>
+                                    <option value="3">Grade 3</option>
+                                    <option value="4">Grade 4</option>
+                                    <option value="5">Grade 5</option>
+                                    <option value="6">Grade 6</option>
+                                    <option value="7">Grade 7</option>
+                                    <option value="8">Grade 8</option>
+                                    <option value="9">Grade 9</option>
+                                    <option value="10">Grade 10</option>
+                                    <option value="11">Grade 11</option>
+                                    <option value="12">Grade 12</option>
+                                    <option value="13">Grade 13</option>
+                                </select>
+                                <div class="error-message hidden text-error-light text-sm mt-1" id="grade-error"></div>
+                            </div>
+
+                            <!-- Subject Selection -->
+                            <div id="subject-selection" class="hidden">
+                                <label class="block text-sm font-medium text-text-primary mb-4">
+                                    Select Your Subjects <span class="text-error-light">*</span>
+                                </label>
+                                <div id="subjects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    <!-- Dynamic subject checkboxes will be inserted here -->
+                                </div>
+                                <div class="error-message hidden text-error-light text-sm mt-2" id="subjects-error"></div>
+                            </div>
+                        </div>
+
+
+                        
+                        <!-- Terms and Conditions -->
+                        <div class="mt-8 p-4 bg-primary-50 rounded-lg">
+                            <label for="terms" class="flex items-start cursor-pointer">
+                                <input type="checkbox" id="terms" name="terms" class="mt-1 mr-3" tabindex="0" title="Terms and Conditions">
+                                <span class="text-sm text-text-secondary">
+                                    I agree to the <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700 underline">Terms of Service</a>
+                                    and <a href="javascript:void(0)" class="text-primary-600 hover:text-primary-700 underline">Privacy Policy</a>.
+                                    I understand that my data will be used to provide personalized learning experiences.
+                                </span>
+                            </label>
+                            <div class="error-message hidden text-error-light text-sm mt-1" id="terms-error"></div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between items-center pt-8 border-t border-border">
+                        <button type="button" id="prev-btn" class="hidden bg-secondary-100 text-text-primary px-6 py-3 rounded-lg font-medium hover:bg-secondary-200 transition-smooth">
+                            <svg class="h-5 w-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                            Previous
+                        </button>
+                        
+                        <div class="flex space-x-4 ml-auto">
+                            <button type="button" id="next-btn" class="btn-primary px-6 py-3">
+                                Next
+                                <svg class="h-5 w-5 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                            
+                            <button type="submit" id="submit-btn" class="hidden btn-primary px-8 py-3">
+                                <svg class="h-5 w-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Create Account
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Login Link -->
+                <div class="text-center mt-8 pt-6 border-t border-border">
+                    <p class="text-text-secondary">
+                        Already have an account? 
+                        <a href="./user_login.html" class="text-primary-600 hover:text-primary-700 font-medium transition-smooth">
+                            Sign in here
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <svg class="h-10 w-10 text-primary-500" viewBox="0 0 40 40" fill="currentColor">
+                            <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="ml-3 text-xl font-heading font-semibold">EDU-TECH LMS</span>
+                    </div>
+                    <p class="text-secondary-400 mb-6 max-w-md">
+                        Empowering Sri Lankan education with comprehensive digital learning solutions designed for the local curriculum and cultural context.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" aria-label="Twitter" class="text-secondary-400 hover:text-primary-500 transition-smooth">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="Facebook" class="text-secondary-400 hover:text-primary-500 transition-smooth">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" aria-label="LinkedIn" class="text-secondary-400 hover:text-primary-500 transition-smooth">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="./landing_page.html" class="text-secondary-400 hover:text-primary-500 transition-smooth">Home</a></li>
+                        <li><a href="./user_login.html" class="text-secondary-400 hover:text-primary-500 transition-smooth">Login</a></li>
+                        <li><a href="./admin_control_panel.html" class="text-secondary-400 hover:text-primary-500 transition-smooth">Admin Panel</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h4 class="font-heading font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Terms of Service</a></li>
+                        <li><a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-secondary-600 mt-12 pt-8 text-center">
+                <p class="text-secondary-400">
+                    © 2025 EDU-TECH LMS. All Rights Reserved. | Designed for Sri Lankan Education System
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/app.js"></script>
+    <script>
+        // Registration form state management - Two Step System
+        let currentStep = 1;
+        const totalSteps = 2;
+
+        // Subject configurations for different grades
+        const subjectsByGrade = {
+            '1-5': ['Tamil', 'English', 'Sinhala', 'Mathematics', 'Religion', 'Sutradal'],
+            '6-9': ['Tamil', 'English', 'Sinhala', 'Mathematics', 'Religion', 'History', 'Geography', 'Civics Education', 'ICT', 'Technology', 'Science', 'Basket Subjects'],
+            '10-11': ['Tamil', 'English', 'Mathematics', 'Religion', 'Science', 'History', 'Basket Category 1', 'Basket Category 2', 'Basket Category 3'],
+            '12-13': ['Science Stream', 'Commerce Stream', 'Arts Stream', 'Technology Stream']
+        };
+
+        // DOM elements
+        let form, prevBtn, nextBtn, submitBtn, progressBar, progressText, mobileMenuBtn, mobileMenu;
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            form = document.getElementById('registration-form');
+            prevBtn = document.getElementById('prev-btn');
+            nextBtn = document.getElementById('next-btn');
+            submitBtn = document.getElementById('submit-btn');
+            progressBar = document.getElementById('progress-bar');
+            progressText = document.getElementById('progress-text');
+            mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            mobileMenu = document.getElementById('mobile-menu');
+
+            updateStepDisplay();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Password toggle
+            document.getElementById('toggle-password').addEventListener('click', function() {
+                const passwordField = document.getElementById('password');
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+            });
+
+            // Role selection
+            document.querySelectorAll('input[name="role"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll('.role-card').forEach(card => {
+                        card.classList.remove('border-primary-600', 'bg-primary-50');
+                        card.classList.add('border-border');
+                    });
+
+                    const selectedCard = this.closest('.role-card');
+                    selectedCard.classList.remove('border-border');
+                    selectedCard.classList.add('border-primary-600', 'bg-primary-50');
+
+                    // Show appropriate details section
+                    const studentDetails = document.getElementById('student-details');
+                    const teacherDetails = document.getElementById('teacher-details');
+
+                    if (this.value === 'student') {
+                        studentDetails.classList.remove('hidden');
+                        if (teacherDetails) teacherDetails.classList.add('hidden');
+                    } else if (this.value === 'teacher') {
+                        studentDetails.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Grade selection
+            document.getElementById('grade').addEventListener('change', function() {
+                const grade = parseInt(this.value);
+                if (grade) {
+                    generateSubjectCheckboxes(grade);
+                    document.getElementById('subject-selection').classList.remove('hidden');
+                } else {
+                    document.getElementById('subject-selection').classList.add('hidden');
+                }
+            });
+
+            // Navigation buttons
+            prevBtn.addEventListener('click', previousStep);
+            nextBtn.addEventListener('click', nextStep);
+
+            // Form submission
+            form.addEventListener('submit', handleSubmit);
+        }
+
+        function generateSubjectCheckboxes(grade) {
+            const container = document.getElementById('subjects-container');
+            const subjectLabel = document.querySelector('#subject-selection label');
+            const subjectSelection = document.getElementById('subject-selection');
+
+            // Hide subject selection for grades 1-9
+            if (grade >= 1 && grade <= 9) {
+                subjectSelection.classList.add('hidden');
+                return;
+            }
+
+            // Show subject selection for grades 10-13
+            subjectSelection.classList.remove('hidden');
+
+            let subjects = [];
+            let inputType = 'checkbox';
+            let inputName = 'subjects';
+            let labelText = 'Select Your Subjects';
+
+            if (grade >= 10 && grade <= 11) {
+                subjects = subjectsByGrade['10-11'];
+                labelText = 'Select Your Basket Subjects';
+                inputType = 'checkbox';
+                inputName = 'basketSubjects';
+            } else if (grade >= 12 && grade <= 13) {
+                subjects = subjectsByGrade['12-13'];
+                labelText = 'Select Your Stream';
+                inputType = 'radio';
+                inputName = 'stream';
+            }
+
+            // Update label text
+            subjectLabel.innerHTML = `${labelText} <span class="text-error-light">*</span>`;
+
+            container.innerHTML = '';
+            subjects.forEach(subject => {
+                const label = document.createElement('label');
+                label.className = 'flex items-center p-3 border border-border rounded-lg hover:bg-primary-50 cursor-pointer';
+                label.innerHTML = `
+                    <input type="${inputType}" name="${inputName}" value="${subject}" class="mr-3">
+                    <span class="text-text-primary">${subject}</span>
+                `;
+                container.appendChild(label);
+            });
+        }
+
+        function generateTeacherSubjects() {
+            const container = document.getElementById('teacher-subjects-container');
+            const teacherSubjects = [
+                'Tamil', 'English', 'Sinhala', 'Mathematics', 'Religion', 'History',
+                'Geography', 'Civics Education', 'ICT', 'Technology', 'Science',
+                'Basket Category 1', 'Basket Category 2', 'Basket Category 3',
+                'Science Stream', 'Commerce Stream', 'Arts Stream', 'Technology Stream'
+            ];
+
+            container.innerHTML = '';
+            teacherSubjects.forEach(subject => {
+                const label = document.createElement('label');
+                label.className = 'flex items-center p-3 border border-border rounded-lg hover:bg-primary-50 cursor-pointer';
+                label.innerHTML = `
+                    <input type="checkbox" name="teacherSubjects" value="${subject}" class="mr-3">
+                    <span class="text-text-primary">${subject}</span>
+                `;
+                container.appendChild(label);
+            });
+        }
+
+        function updateStepDisplay() {
+            // Hide all steps
+            document.querySelectorAll('.registration-step').forEach(step => {
+                step.classList.add('hidden');
+            });
+
+            // Show current step
+            if (currentStep === 1) {
+                document.getElementById('step-1').classList.remove('hidden');
+            } else if (currentStep === 2) {
+                document.getElementById('step-2').classList.remove('hidden');
+                document.getElementById('step-3').classList.remove('hidden');
+            }
+
+            // Update progress bar
+            const progress = (currentStep / totalSteps) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `Step ${currentStep} of ${totalSteps}`;
+
+            // Update navigation buttons
+            prevBtn.classList.toggle('hidden', currentStep === 1);
+            nextBtn.classList.toggle('hidden', currentStep === totalSteps);
+            submitBtn.classList.toggle('hidden', currentStep !== totalSteps);
+        }
+
+        function validateStep(step) {
+            const errors = [];
+
+            if (step === 1) {
+                const username = document.getElementById('username').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                if (!username) errors.push({ field: 'username', message: 'Username is required' });
+                if (!email) errors.push({ field: 'email', message: 'Email is required' });
+                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    errors.push({ field: 'email', message: 'Please enter a valid email address' });
+                }
+                if (!password) errors.push({ field: 'password', message: 'Password is required' });
+                else if (password.length < 8) {
+                    errors.push({ field: 'password', message: 'Password must be at least 8 characters long' });
+                }
+                if (password !== confirmPassword) {
+                    errors.push({ field: 'confirmPassword', message: 'Passwords do not match' });
+                }
+            }
+
+            if (step === 2) {
+                const role = document.querySelector('input[name="role"]:checked');
+                if (!role) errors.push({ field: 'role', message: 'Please select a role' });
+
+                const roleValue = role.value;
+
+                if (roleValue === 'student') {
+                    const grade = document.getElementById('grade').value;
+                    if (!grade) errors.push({ field: 'grade', message: 'Please select your grade' });
+
+                    // Validate subjects based on grade
+                    const gradeNum = parseInt(grade);
+                    let subjectInputs = [];
+                    let fieldName = 'subjects';
+
+                    if (gradeNum >= 10 && gradeNum <= 11) {
+                        subjectInputs = document.querySelectorAll('input[name="basketSubjects"]:checked');
+                        fieldName = 'subjects';
+                    } else if (gradeNum >= 12 && gradeNum <= 13) {
+                        subjectInputs = document.querySelectorAll('input[name="stream"]:checked');
+                        fieldName = 'subjects';
+                    } else if (gradeNum >= 1 && gradeNum <= 9) {
+                        // No subject selection required for grades 1-9
+                        subjectInputs = [{ length: 1 }]; // Dummy to pass validation
+                    }
+
+                    if (subjectInputs.length === 0) {
+                        errors.push({ field: fieldName, message: gradeNum >= 12 && gradeNum <= 13 ? 'Please select a stream' : 'Please select at least one subject' });
+                    }
+                } else if (roleValue === 'teacher') {
+                    // No subject selection required for teachers
+                }
+
+                const terms = document.getElementById('terms').checked;
+                if (!terms) errors.push({ field: 'terms', message: 'Please accept the terms and conditions' });
+            }
+
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.classList.add('hidden');
+                error.textContent = '';
+            });
+
+            // Display new errors
+            errors.forEach(error => {
+                const errorElement = document.getElementById(`${error.field}-error`);
+                if (errorElement) {
+                    errorElement.textContent = error.message;
+                    errorElement.classList.remove('hidden');
+                }
+            });
+
+            return errors.length === 0;
+        }
+
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStepDisplay();
+                }
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+
+            if (!validateStep(currentStep)) {
+                return;
+            }
+
+            // Collect form data
+            const formData = new FormData(form);
+            const userData = {};
+
+            for (let [key, value] of formData.entries()) {
+                if (userData[key]) {
+                    if (Array.isArray(userData[key])) {
+                        userData[key].push(value);
+                    } else {
+                        userData[key] = [userData[key], value];
+                    }
+                } else {
+                    userData[key] = value;
+                }
+            }
+
+            // Map form field names to API expected names
+            const mappedData = {
+                username: userData.username, // API expects 'username'
+                email: userData.email,
+                password: userData.password,
+                confirm_password: userData.confirmPassword, // API expects 'confirm_password'
+                role: userData.role,
+                grade: userData.grade ? `Grade ${userData.grade}` : undefined,
+                phase: currentStep
+            };
+
+            // Handle subject/stream mapping based on role and grade
+            if (userData.role === 'student') {
+                const gradeNum = parseInt(userData.grade);
+                if (gradeNum >= 10 && gradeNum <= 11 && userData.basketSubjects) {
+                    // Basket subjects for grades 10-11
+                    const basketSubjects = Array.isArray(userData.basketSubjects) ? userData.basketSubjects : [userData.basketSubjects];
+                    basketSubjects.forEach((subject, index) => {
+                        if (index < 3) {
+                            mappedData[`basket_subject_${index + 1}`] = subject;
+                        }
+                    });
+                } else if (gradeNum >= 12 && gradeNum <= 13 && userData.stream) {
+                    // Stream for grades 12-13
+                    mappedData.stream = userData.stream;
+                }
+            }
+            // Teacher subjects are not required for registration
+
+            // Set loading state
+            submitBtn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 inline mr-2" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Creating Account...
+            `;
+            submitBtn.disabled = true;
+
+            try {
+                // Send registration request with phase
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(mappedData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                if (result.phase === 1) {
+                    // Phase 1 completed, move to phase 2
+                    alert('Basic information saved! Please complete your profile.');
+                    currentStep = 2;
+                    updateStepDisplay();
+                    submitBtn.innerHTML = 'Create Account';
+                    submitBtn.disabled = false;
+                } else {
+                    // Registration completed
+                    alert(result.message || 'Registration successful. Please check your email to confirm your account.');
+                    // Clear any existing session to prevent auto-redirect to wrong dashboard
+                    localStorage.removeItem('edutech_session');
+                    sessionStorage.removeItem('edutech_session');
+                    window.location.href = 'user_login.html';
+                }
+                } else {
+                    throw new Error(result.error || 'Registration failed');
+                }
+            } catch (error) {
+                submitBtn.innerHTML = 'Create Account';
+                submitBtn.disabled = false;
+                alert(error.message || 'Registration failed. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>

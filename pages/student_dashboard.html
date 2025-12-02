@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - EDU-TECH LMS</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="../landing_page.html" class="flex items-center">
+                        <svg class="h-10 w-10 text-primary-600" viewBox="0 0 40 40" fill="currentColor">
+                            <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="ml-3 text-xl font-heading font-semibold text-text-primary">EDU-TECH LMS</span>
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="/student_dashboard.html" class="text-primary-600 border-b-2 border-primary-600">Dashboard</a>
+                    <a href="/student_lessons.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Lessons</a>
+                    <a href="/student_quizzes.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Quizzes</a>
+                    <a href="/student_ai_tutor.html" class="text-text-secondary hover:text-primary-600 transition-smooth">AI Tutor</a>
+                    <a href="/student_profile.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Profile</a>
+                    <button id="logoutBtn" class="btn-secondary">Logout</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary-600 p-2" aria-label="Open mobile menu">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="/student_dashboard.html" class="text-primary-600 px-2 py-1">Dashboard</a>
+                    <a href="/student_lessons.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Lessons</a>
+                    <a href="/student_quizzes.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Quizzes</a>
+                    <a href="/student_ai_tutor.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">AI Tutor</a>
+                    <a href="/student_profile.html" class="text-text-secondary hover:text-primary-600 px-2 py-1">Profile</a>
+                    <button id="mobile-logout" class="btn-secondary w-full text-left px-2 py-1">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8">
+        <!-- Welcome Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-3xl font-heading font-bold mb-2" id="welcome-message">Welcome back, Student!</h1>
+                        <p class="text-primary-100 mb-4">Continue your learning journey with personalized lessons and quizzes.</p>
+                        <div class="flex items-center space-x-4 text-sm">
+                            <span class="flex items-center">
+                                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                </svg>
+                                <span id="current-date"></span>
+                            </span>
+                            <span class="flex items-center">
+                                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                                <span id="grade-info">Grade 10</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold" id="overall-progress">0%</div>
+                                <div class="text-sm text-primary-100">Overall Progress</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-surface rounded-xl p-6 shadow-card">
+                    <div class="flex items-center">
+                        <div class="bg-primary-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-text-primary" id="lessons-count">0</div>
+                            <div class="text-sm text-text-secondary">Lessons Available</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-xl p-6 shadow-card">
+                    <div class="flex items-center">
+                        <div class="bg-accent-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="h-6 w-6 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-text-primary" id="completed-lessons">0</div>
+                            <div class="text-sm text-text-secondary">Lessons Completed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-xl p-6 shadow-card">
+                    <div class="flex items-center">
+                        <div class="bg-secondary-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="h-6 w-6 text-secondary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-text-primary" id="quizzes-taken">0</div>
+                            <div class="text-sm text-text-secondary">Quizzes Taken</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-surface rounded-xl p-6 shadow-card">
+                    <div class="flex items-center">
+                        <div class="bg-success-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="h-6 w-6 text-success-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-text-primary" id="avg-score">0%</div>
+                            <div class="text-sm text-text-secondary">Average Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Lessons Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="bg-surface rounded-2xl p-8 shadow-card">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-heading font-bold text-text-primary mb-2">Recent Lessons</h2>
+                        <p class="text-text-secondary">Continue where you left off or start new lessons</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <select id="subject-filter" class="px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" aria-label="Filter lessons by subject">
+                            <option value="">All Subjects</option>
+                        </select>
+                        <button id="refresh-lessons" class="btn-secondary" aria-label="Refresh lessons list">
+                            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="lessons-loading" class="hidden flex items-center justify-center py-12">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+                    <span class="ml-4 text-text-secondary">Loading lessons...</span>
+                </div>
+
+                <!-- Empty State -->
+                <div id="lessons-empty" class="hidden text-center py-12">
+                    <svg class="mx-auto h-24 w-24 text-secondary-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">No lessons available</h3>
+                    <p class="text-text-secondary">Lessons will appear here once they are assigned to your grade.</p>
+                </div>
+
+                <!-- Lessons Container -->
+                <div id="lessons-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Lessons will be populated here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Overview Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="bg-surface rounded-2xl p-8 shadow-card">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-heading font-bold text-text-primary mb-2">Progress Overview</h2>
+                        <p class="text-text-secondary">Track your learning progress across all subjects</p>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="progress-loading" class="hidden flex items-center justify-center py-12">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+                    <span class="ml-4 text-text-secondary">Loading progress...</span>
+                </div>
+
+                <!-- Empty State -->
+                <div id="progress-empty" class="hidden text-center py-12">
+                    <svg class="mx-auto h-24 w-24 text-secondary-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">No progress data yet</h3>
+                    <p class="text-text-secondary">Start learning to see your progress here.</p>
+                </div>
+
+                <!-- Progress Container -->
+                <div id="progress-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Progress cards will be populated here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Tutor Quick Access Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="bg-gradient-to-r from-accent-500 to-accent-600 rounded-2xl p-8 text-white">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h2 class="text-2xl font-heading font-bold mb-2">AI Tutor</h2>
+                        <p class="text-accent-100">Get instant help with your studies</p>
+                    </div>
+                    <a href="student_ai_tutor.html" class="btn-secondary bg-white/10 hover:bg-white/20 text-white border-white/20">
+                        Open Full Tutor
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Quick Questions -->
+                    <div>
+                        <h3 class="text-lg font-heading font-semibold mb-4">Quick Questions</h3>
+                        <div class="grid grid-cols-1 gap-3">
+                            <button class="quick-question-btn bg-white/10 hover:bg-white/20 rounded-lg p-4 text-left transition-colors" data-question="Explain photosynthesis">
+                                <div class="font-medium">Explain photosynthesis</div>
+                                <div class="text-sm text-accent-200">Biology • Grade 10</div>
+                            </button>
+                            <button class="quick-question-btn bg-white/10 hover:bg-white/20 rounded-lg p-4 text-left transition-colors" data-question="Solve 2x + 3 = 7">
+                                <div class="font-medium">Solve 2x + 3 = 7</div>
+                                <div class="text-sm text-accent-200">Mathematics • Algebra</div>
+                            </button>
+                            <button class="quick-question-btn bg-white/10 hover:bg-white/20 rounded-lg p-4 text-left transition-colors" data-question="What is democracy?">
+                                <div class="font-medium">What is democracy?</div>
+                                <div class="text-sm text-accent-200">Civics • Grade 9</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Chat -->
+                    <div>
+                        <h3 class="text-lg font-heading font-semibold mb-4">Ask a Question</h3>
+                        <div class="bg-white/10 rounded-lg p-4">
+                            <div class="flex space-x-3">
+                                <input type="text" id="ai-query" placeholder="Ask me anything about your studies..." class="flex-1 bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-accent-200 focus:ring-2 focus:ring-white/50 focus:border-transparent">
+                                <button id="ask-ai-btn" class="bg-white text-accent-600 px-6 py-2 rounded-lg hover:bg-accent-50 transition-colors" aria-label="Send question to AI tutor">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="chat-container" class="mt-4 space-y-3 max-h-48 overflow-y-auto">
+                                <!-- Chat messages will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <svg class="h-8 w-8 text-primary-500" viewBox="0 0 40 40" fill="currentColor">
+                        <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                    </svg>
+                    <span class="ml-3 text-lg font-heading font-semibold">EDU-TECH LMS</span>
+                </div>
+                <div class="flex space-x-6 text-sm">
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Terms of Service</a>
+                    <a href="javascript:void(0)" class="text-secondary-400 hover:text-primary-500 transition-smooth">Support</a>
+                </div>
+            </div>
+            <div class="border-t border-secondary-600 mt-6 pt-6 text-center">
+                <p class="text-secondary-400 text-sm">
+                    © 2025 EDU-TECH LMS. All Rights Reserved. | Designed for Sri Lankan Education System
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../public/app.js"></script>
+    <script>
+        // Global variables
+        let currentUser = null;
+        let lessonsData = {};
+        let progressData = {};
+        let quizzesData = {};
+        let quizAttemptsData = {};
+
+        // DOM elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const mobileLogout = document.getElementById('mobile-logout');
+        const lessonsContainer = document.getElementById('lessons-container');
+        const lessonsLoading = document.getElementById('lessons-loading');
+        const lessonsEmpty = document.getElementById('lessons-empty');
+        const progressContainer = document.getElementById('progress-container');
+        const progressLoading = document.getElementById('progress-loading');
+        const progressEmpty = document.getElementById('progress-empty');
+        const subjectFilter = document.getElementById('subject-filter');
+        const refreshLessonsBtn = document.getElementById('refresh-lessons');
+        const aiQueryInput = document.getElementById('ai-query');
+        const askAiBtn = document.getElementById('ask-ai-btn');
+        const chatContainer = document.getElementById('chat-container');
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', async function() {
+            await initializeDashboard();
+        });
+
+        async function initializeDashboard() {
+            try {
+                // Check authentication
+                const sessionData = localStorage.getItem('edutech_session') || sessionStorage.getItem('edutech_session');
+                if (!sessionData) {
+                    window.location.href = 'user_login.html';
+                    return;
+                }
+
+                const session = JSON.parse(sessionData);
+                currentUser = session.user;
+
+                if (!currentUser || currentUser.role !== 'student') {
+                    window.location.href = 'user_login.html';
+                    return;
+                }
+
+                // Check if token exists and is valid
+                if (!session.token) {
+                    // Clear invalid session and redirect
+                    localStorage.removeItem('edutech_session');
+                    sessionStorage.removeItem('edutech_session');
+                    window.location.href = 'user_login.html';
+                    return;
+                }
+
+                // Update UI with user info
+                updateUserInfo();
+
+                // Load dashboard data
+                await Promise.all([
+                    loadLessons(),
+                    loadProgress(),
+                    loadStats()
+                ]);
+
+            } catch (error) {
+                console.error('Dashboard initialization failed:', error);
+                EDUApp.showAlert('Failed to load dashboard', 'error');
+            }
+        }
+
+        function updateUserInfo() {
+            const welcomeMessage = document.getElementById('welcome-message');
+            const gradeInfo = document.getElementById('grade-info');
+            const currentDate = document.getElementById('current-date');
+
+            welcomeMessage.textContent = `Welcome back, ${currentUser.username}!`;
+            gradeInfo.textContent = currentUser.grade || 'Grade 10';
+            currentDate.textContent = new Date().toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        async function loadLessons() {
+            try {
+                lessonsLoading.classList.remove('hidden');
+                lessonsEmpty.classList.add('hidden');
+
+                const grade = currentUser.grade || 'Grade 10';
+                lessonsData = await EDUApp.getLessons(grade);
+
+                renderLessons();
+                populateSubjectFilter();
+
+            } catch (error) {
+                console.error('Failed to load lessons:', error);
+                lessonsEmpty.classList.remove('hidden');
+            } finally {
+                lessonsLoading.classList.add('hidden');
+            }
+        }
+
+        function renderLessons(subjectFilter = '') {
+            lessonsContainer.innerHTML = '';
+
+            let totalLessons = 0;
+            for (const subject in lessonsData) {
+                if (subjectFilter && subject !== subjectFilter) continue;
+
+                lessonsData[subject].forEach(lesson => {
+                    totalLessons++;
+                    const lessonCard = createLessonCard(lesson, subject);
+                    lessonsContainer.appendChild(lessonCard);
+                });
+            }
+
+            document.getElementById('lessons-count').textContent = totalLessons;
+
+            if (totalLessons === 0) {
+                lessonsEmpty.classList.remove('hidden');
+            }
+        }
+
+        function createLessonCard(lesson, subject) {
+            const card = document.createElement('div');
+            card.className = 'bg-surface rounded-xl p-6 shadow-card hover:shadow-lg transition-shadow';
+
+            const progress = progressData[lesson.id] || { progress_percentage: 0, completed: false };
+            const progressPercent = Math.round(progress.progress_percentage);
+
+            card.innerHTML = `
+                <div class="flex items-start justify-between mb-4">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-heading font-semibold text-text-primary mb-2">${lesson.title}</h3>
+                        <p class="text-text-secondary text-sm mb-3">${subject}</p>
+                        <p class="text-text-secondary text-sm line-clamp-2">${lesson.content}</p>
+                    </div>
+                    <div class="ml-4">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                            progress.completed ? 'bg-success-100 text-success-800' :
+                            progress.progress_percentage > 0 ? 'bg-primary-100 text-primary-800' :
+                            'bg-secondary-100 text-secondary-800'
+                        }">
+                            ${progress.completed ? 'Completed' : progress.progress_percentage > 0 ? `${progressPercent}%` : 'Not Started'}
+                        </span>
+                    </div>
+                </div>
+
+                ${progress.progress_percentage > 0 ? `
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm text-text-secondary mb-1">
+                            <span>Progress</span>
+                            <span>${progressPercent}%</span>
+                        </div>
+                        <div class="w-full bg-secondary-200 rounded-full h-2">
+                            <div class="bg-primary-600 h-2 rounded-full transition-all duration-300" style="width: ${progressPercent}%"></div>
+                        </div>
+                    </div>
+                ` : ''}
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                        ${lesson.attachment_type ? `
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
+                                </svg>
+                                ${lesson.attachment_type}
+                            </span>
+                        ` : ''}
+                        ${lesson.video_file || lesson.youtube_link ? `
+                            <span class="flex items-center">
+                                <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                </svg>
+                                Video
+                            </span>
+                        ` : ''}
+                    </div>
+                    <button class="btn-primary text-sm px-4 py-2 view-lesson-btn" data-lesson-id="${lesson.id}">
+                        ${progress.completed ? 'Review' : progress.progress_percentage > 0 ? 'Continue' : 'Start'}
+                    </button>
+                </div>
+            `;
+
+            // Add event listener to view lesson button
+            const viewBtn = card.querySelector('.view-lesson-btn');
+            viewBtn.addEventListener('click', () => viewLesson(lesson.id));
+
+            return card;
+        }
+
+        function populateSubjectFilter() {
+            subjectFilter.innerHTML = '<option value="">All Subjects</option>';
+            Object.keys(lessonsData).forEach(subject => {
+                const option = document.createElement('option');
+                option.value = subject;
+                option.textContent = subject;
+                subjectFilter.appendChild(option);
+            });
+        }
+
+        async function loadProgress() {
+            try {
+                progressLoading.classList.remove('hidden');
+                progressEmpty.classList.add('hidden');
+
+                progressData = await EDUApp.getProgress(currentUser.id);
+
+                renderProgress();
+
+            } catch (error) {
+                console.error('Failed to load progress:', error);
+                progressEmpty.classList.remove('hidden');
+            } finally {
+                progressLoading.classList.add('hidden');
+            }
+        }
+
+        function renderProgress() {
+            progressContainer.innerHTML = '';
+
+            if (Object.keys(progressData).length === 0) {
+                progressEmpty.classList.remove('hidden');
+                return;
+            }
+
+            Object.entries(progressData).forEach(([lessonId, progress]) => {
+                const progressCard = createProgressCard(lessonId, progress);
+                progressContainer.appendChild(progressCard);
+            });
+        }
+
+        function createProgressCard(lessonId, progress) {
+            const card = document.createElement('div');
+            card.className = 'bg-surface rounded-xl p-6 shadow-card';
+
+            const progressPercent = Math.round(progress.progress_percentage);
+
+            card.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-lg font-heading font-semibold text-text-primary">Lesson ${lessonId}</h3>
+                        <p class="text-text-secondary text-sm">Last accessed: ${new Date().toLocaleDateString()}</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl font-bold text-text-primary">${progressPercent}%</div>
+                        <div class="text-sm text-text-secondary">Complete</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="w-full bg-secondary-200 rounded-full h-3">
+                        <div class="bg-primary-600 h-3 rounded-full transition-all duration-300" style="width: ${progressPercent}%"></div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-sm">
+                    <div class="flex items-center space-x-4">
+                        <span class="flex items-center text-text-secondary">
+                            <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            ${progress.time_spent} min spent
+                        </span>
+                        ${progress.completed ? `
+                            <span class="flex items-center text-success-600">
+                                <svg class="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Completed
+                            </span>
+                        ` : ''}
+                    </div>
+                    <button class="text-primary-600 hover:text-primary-700 font-medium" onclick="viewLesson(${lessonId})">
+                        Continue Learning
+                    </button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        async function loadStats() {
+            try {
+                let completedLessons = 0;
+                let totalProgress = 0;
+                let progressCount = 0;
+
+                Object.values(progressData).forEach(progress => {
+                    if (progress.completed) completedLessons++;
+                    totalProgress += progress.progress_percentage;
+                    progressCount++;
+                });
+
+                const overallProgress = progressCount > 0 ? Math.round(totalProgress / progressCount) : 0;
+
+                document.getElementById('overall-progress').textContent = `${overallProgress}%`;
+                document.getElementById('completed-lessons').textContent = completedLessons;
+                document.getElementById('quizzes-taken').textContent = '0'; // Will be implemented with quiz functionality
+                document.getElementById('avg-score').textContent = '0%'; // Will be implemented with quiz functionality
+
+            } catch (error) {
+                console.error('Failed to load stats:', error);
+            }
+        }
+
+        async function viewLesson(lessonId) {
+            try {
+                const lesson = await EDUApp.getLesson(lessonId);
+                // Navigate to lesson page
+                window.location.href = `lession_page.html?lesson_id=${lessonId}`;
+            } catch (error) {
+                EDUApp.showAlert('Failed to load lesson', 'error');
+            }
+        }
+
+        // Event listeners
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            EDUApp.logout();
+        });
+
+        mobileLogout.addEventListener('click', function() {
+            EDUApp.logout();
+        });
+
+        subjectFilter.addEventListener('change', function() {
+            renderLessons(this.value);
+        });
+
+        refreshLessonsBtn.addEventListener('click', async function() {
+            await loadLessons();
+            EDUApp.showAlert('Lessons refreshed', 'success');
+        });
+
+        askAiBtn.addEventListener('click', async function() {
+            const query = aiQueryInput.value.trim();
+            if (!query) {
+                EDUApp.showAlert('Please enter a question', 'error');
+                return;
+            }
+
+            // Add user message to chat
+            addMessageToChat(query, 'user');
+
+            // Clear input
+            aiQueryInput.value = '';
+
+            // Set loading state
+            askAiBtn.disabled = true;
+            askAiBtn.innerHTML = '<div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>';
+
+            try {
+                const response = await EDUApp.getAITutorResponse(query);
+                addMessageToChat(response, 'ai');
+            } catch (error) {
+                addMessageToChat('Sorry, I\'m having trouble answering that right now. Please try again later.', 'ai');
+            } finally {
+                askAiBtn.disabled = false;
+                askAiBtn.innerHTML = '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+            }
+        });
+
+        function addMessageToChat(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = sender === 'user' ? 'bg-primary-600 rounded-lg p-4 text-white' : 'bg-secondary-50 rounded-lg p-4';
+
+            messageDiv.innerHTML = `
+                <div class="flex items-start">
+                    ${sender === 'ai' ? `
+                        <div class="bg-primary-600 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                            <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                    ` : ''}
+                    <div class="flex-1">
+                        <p class="${sender === 'user' ? 'text-white' : 'text-text-primary'}">${message}</p>
+                    </div>
+                </div>
+            `;
+
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>

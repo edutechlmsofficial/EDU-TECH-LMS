@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson: Introduction to Quadratic Equations - EDU-TECH LMS</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  </head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-soft sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-10 w-10 text-primary-600" viewBox="0 0 40 40" fill="currentColor">
+                        <rect x="4" y="8" width="32" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M8 16h24M8 20h16M8 24h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="30" cy="12" r="2" fill="currentColor"/>
+                    </svg>
+                    <span class="ml-3 text-xl font-heading font-semibold text-text-primary">EDU-TECH LMS</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="landing_page.html" class="text-text-secondary hover:text-primary-600 transition-smooth">Dashboard</a>
+                    <a href="#" class="text-text-secondary hover:text-primary-600 transition-smooth">My Courses</a>
+                    <a href="#" class="text-text-secondary hover:text-primary-600 transition-smooth">Progress</a>
+                    <div class="relative group">
+                        <button class="flex items-center text-text-secondary hover:text-primary-600 transition-smooth">
+                            <img src="https://img.rocket.new/generatedImages/rocket_gen_img_137a5cc55-1762274237852.png" 
+                                 alt="Student profile picture"
+                                 class="w-8 h-8 rounded-full object-cover mr-2"
+                                 onerror="this.src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100'; this.onerror=null;">
+                            <span class="text-sm font-medium">Amara S.</span>
+                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-text-secondary hover:text-primary-600 p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="bg-surface border-b border-border-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center py-3">
+                <div class="flex items-center text-sm text-text-secondary mr-6">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0L2 10.414V17a1 1 0 001 1h14a1 1 0 001-1v-6.586l-4.293 4.293a1 1 0 01-1.414 0L7.707 14.707z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M2 6a1 1 0 011-1h14a1 1 0 011 1v.586l-6 6-6-6V6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Grade 10 • Mathematics • Lesson 3 of 12</span>
+                </div>
+                <div class="flex-1 bg-border-light rounded-full h-2 mr-4">
+                    <div class="bg-accent-500 h-2 rounded-full" style="width: 45%"></div>
+                </div>
+                <span class="text-sm font-medium text-text-secondary">45% Complete</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-surface border-b border-border-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="landing_page.html" class="text-primary-600 hover:text-primary-700 transition-smooth">Home</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <a href="#" class="text-primary-600 hover:text-primary-700 transition-smooth">Mathematics</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <a href="#" class="text-primary-600 hover:text-primary-700 transition-smooth">Quadratic Equations</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-text-secondary">Introduction to Quadratic Equations</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid lg:grid-cols-4 gap-8">
+            
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-surface rounded-2xl shadow-card p-6 mb-6">
+                    <!-- Lesson Outline -->
+                    <h3 class="font-heading font-semibold text-text-primary mb-4">Lesson Outline</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-accent-500 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3">✓</div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">Introduction</div>
+                                <div class="text-xs text-text-secondary">5 minutes</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-primary-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-3">2</div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">What are Quadratic Equations?</div>
+                                <div class="text-xs text-text-secondary">10 minutes</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-border-light rounded-full flex items-center justify-center text-text-secondary text-xs font-bold mr-3">3</div>
+                            <div>
+                                <div class="text-sm text-text-secondary">Standard Form</div>
+                                <div class="text-xs text-text-secondary">8 minutes</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-border-light rounded-full flex items-center justify-center text-text-secondary text-xs font-bold mr-3">4</div>
+                            <div>
+                                <div class="text-sm text-text-secondary">Practice Examples</div>
+                                <div class="text-xs text-text-secondary">12 minutes</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 bg-border-light rounded-full flex items-center justify-center text-text-secondary text-xs font-bold mr-3">5</div>
+                            <div>
+                                <div class="text-sm text-text-secondary">Quiz & Assessment</div>
+                                <div class="text-xs text-text-secondary">5 minutes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-surface rounded-2xl shadow-card p-6 mb-6">
+                    <h3 class="font-heading font-semibold text-text-primary mb-4">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button class="w-full bg-accent-50 text-accent-500 px-4 py-3 rounded-lg font-medium flex items-center justify-center hover:bg-accent-100 transition-smooth">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                            Ask AI Tutor
+                        </button>
+                        <button class="w-full bg-primary-50 text-primary-600 px-4 py-3 rounded-lg font-medium flex items-center justify-center hover:bg-primary-100 transition-smooth">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
+                            </svg>
+                            Take Notes
+                        </button>
+                        <button class="w-full bg-warning-light/10 text-warning-light px-4 py-3 rounded-lg font-medium flex items-center justify-center hover:bg-warning-light/20 transition-smooth">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                            </svg>
+                            Bookmark
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Related Resources -->
+                <div class="bg-surface rounded-2xl shadow-card p-6">
+                    <h3 class="font-heading font-semibold text-text-primary mb-4">Related Resources</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <svg class="w-5 h-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">Formula Sheet</div>
+                                <div class="text-xs text-text-secondary">Download PDF</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-accent-50 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <svg class="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">Video Tutorial</div>
+                                <div class="text-xs text-text-secondary">15 min explanation</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-warning-light/10 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+                                <svg class="w-5 h-5 text-warning-light" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-text-primary">Practice Worksheets</div>
+                                <div class="text-xs text-text-secondary">Additional exercises</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <div class="bg-surface rounded-2xl shadow-card p-8">
+                    <!-- Lesson Header -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <span class="bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm font-medium mr-4">Grade 10 Mathematics</span>
+                            <span class="text-text-secondary text-sm">Estimated time: 40 minutes</span>
+                        </div>
+                        <h1 class="text-3xl lg:text-4xl font-heading font-bold text-text-primary mb-4">
+                            Introduction to Quadratic Equations
+                        </h1>
+                        <p class="text-lg text-text-secondary leading-relaxed">
+                            Welcome to this comprehensive lesson on quadratic equations. By the end of this session, you'll understand what quadratic equations are, how to identify them, and their standard form representation.
+                        </p>
+                    </div>
+
+                    <!-- Learning Objectives -->
+                    <div class="bg-accent-50 border border-accent-100 rounded-lg p-6 mb-8">
+                        <h3 class="font-heading font-semibold text-text-primary mb-3 flex items-center">
+                            <svg class="w-5 h-5 text-accent-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Learning Objectives
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 text-accent-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-text-primary">Define quadratic equations and identify their key characteristics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 text-accent-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-text-primary">Understand and write quadratic equations in standard form</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 text-accent-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-text-primary">Identify coefficients and constants in quadratic expressions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Video Content -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-heading font-semibold text-text-primary mb-4">Video Lesson</h2>
+                        <div class="relative bg-secondary-100 rounded-xl overflow-hidden" style="padding-bottom: 56.25%;">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                        <button aria-label="Play lesson video" class="bg-primary-600 hover:bg-primary-700 text-white rounded-full p-6 shadow-elevated transition-smooth">
+                            <svg class="w-12 h-12 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1635070041409-e63e783ce3c1" 
+                                 alt="Introduction to Quadratic Equations video lesson featuring mathematical formulas and graphical representations"
+                                 class="absolute inset-0 w-full h-full object-cover opacity-75"
+                                 onerror="this.style.display='none';">
+                        </div>
+                        <p class="text-sm text-text-secondary mt-2">Video Duration: 15 minutes | Click to play the introduction lesson</p>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-heading font-semibold text-text-primary mb-6">What are Quadratic Equations?</h2>
+                        
+                        <div class="prose max-w-none">
+                            <p class="text-text-secondary leading-relaxed mb-6">
+                                A quadratic equation is a polynomial equation of degree 2. This means that the highest power of the variable (usually x) is 2. Quadratic equations appear frequently in mathematics and have many real-world applications, from physics to economics.
+                            </p>
+                            
+                            <div class="bg-primary-50 border-l-4 border-primary-600 p-6 mb-6">
+                                <h3 class="font-heading font-semibold text-text-primary mb-3">Definition</h3>
+                                <p class="text-text-secondary">
+                                    A quadratic equation in one variable is an equation that can be written in the standard form:
+                                </p>
+                                <div class="text-center my-4 p-4 bg-surface rounded-lg border">
+                                    <span class="text-2xl font-heading font-bold text-primary-600">ax² + bx + c = 0</span>
+                                </div>
+                                <p class="text-text-secondary text-sm">
+                                    Where <strong>a</strong>, <strong>b</strong>, and <strong>c</strong> are constants, and <strong>a ≠ 0</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Example -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-heading font-semibold text-text-primary mb-4">Interactive Example</h3>
+                        <div class="bg-gradient-to-br from-accent-50 to-primary-50 border border-accent-100 rounded-xl p-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-semibold text-text-primary mb-3">Identify the coefficients:</h4>
+                                    <div class="text-center p-4 bg-surface rounded-lg border-2 border-dashed border-primary-300 mb-4">
+                                        <span class="text-xl font-heading font-bold">2x² + 5x - 3 = 0</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-text-secondary">Coefficient a:</span>
+                                            <input type="text" class="input-field w-20 text-center" placeholder="?" id="coeff-a">
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-text-secondary">Coefficient b:</span>
+                                            <input type="text" class="input-field w-20 text-center" placeholder="?" id="coeff-b">
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-text-secondary">Constant c:</span>
+                                            <input type="text" class="input-field w-20 text-center" placeholder="?" id="coeff-c">
+                                        </div>
+                                    </div>
+                                    <button onclick="checkAnswers()" class="btn-primary w-full mt-4">Check Answers</button>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-text-primary mb-3">Understanding the Graph</h4>
+                                    <div class="bg-surface rounded-lg p-4 border h-48 flex items-center justify-center">
+                                        <svg viewBox="0 0 200 150" class="w-full h-full">
+                                            <!-- Grid -->
+                                            <defs>
+                                                <pattern id="grid" width="20" height="15" patternUnits="userSpaceOnUse">
+                                                    <path d="M 20 0 L 0 0 0 15" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+                                                </pattern>
+                                            </defs>
+                                            <rect width="200" height="150" fill="url(#grid)"/>
+                                            
+                                            <!-- Axes -->
+                                            <line x1="0" y1="75" x2="200" y2="75" stroke="#64748b" stroke-width="2"/>
+                                            <line x1="100" y1="0" x2="100" y2="150" stroke="#64748b" stroke-width="2"/>
+                                            
+                                            <!-- Parabola -->
+                                            <path d="M 40 120 Q 100 30 160 120" fill="none" stroke="#2563eb" stroke-width="3"/>
+                                            
+                                            <!-- Points -->
+                                            <circle cx="100" cy="30" r="3" fill="#ef4444"/>
+                                            <text x="105" y="25" class="text-xs fill-current text-text-secondary">Vertex</text>
+                                        </svg>
+                                    </div>
+                                    <p class="text-sm text-text-secondary mt-2">
+                                        The graph of a quadratic equation is always a parabola that opens upward or downward.
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="answer-feedback" class="mt-4 p-3 rounded-lg hidden"></div>
+                        </div>
+                    </div>
+
+                    <!-- Knowledge Check -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-heading font-semibold text-text-primary mb-4">Knowledge Check</h3>
+                        <div class="bg-warning-light/10 border border-warning-light/20 rounded-xl p-6">
+                            <div class="mb-4">
+                                <p class="font-medium text-text-primary mb-3">
+                                    Which of the following is a quadratic equation?
+                                </p>
+                                <div class="space-y-3">
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="radio" name="quiz" value="a" class="text-primary-600 mr-3">
+                                        <span class="text-text-secondary">x + 5 = 0</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="radio" name="quiz" value="b" class="text-primary-600 mr-3">
+                                        <span class="text-text-secondary">x² - 4x + 4 = 0</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="radio" name="quiz" value="c" class="text-primary-600 mr-3">
+                                        <span class="text-text-secondary">x³ + 2x² - x = 0</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="radio" name="quiz" value="d" class="text-primary-600 mr-3">
+                                        <span class="text-text-secondary">2x + 3y = 7</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button onclick="checkQuiz()" class="btn-primary">Submit Answer</button>
+                            <div id="quiz-feedback" class="mt-4 hidden"></div>
+                        </div>
+                    </div>
+
+                    <!-- Notes Section -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-heading font-semibold text-text-primary mb-4">My Notes</h3>
+                        <div class="bg-secondary-50 border border-border rounded-xl p-6">
+                            <textarea 
+                                placeholder="Take notes during this lesson... (your notes will be saved automatically)"
+                                class="w-full h-32 border-none bg-transparent resize-none focus:outline-none text-text-secondary"
+                                id="lesson-notes"
+                            ></textarea>
+                            <div class="flex justify-between items-center mt-4">
+                                <span class="text-xs text-text-secondary">Auto-saved</span>
+                                <div class="flex space-x-2">
+                        <button aria-label="Edit note" class="text-text-secondary hover:text-primary-600 transition-smooth">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                            </svg>
+                        </button>
+                        <button aria-label="Download notes" class="text-text-secondary hover:text-primary-600 transition-smooth">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Controls -->
+                    <div class="flex justify-between items-center pt-6 border-t border-border-light">
+                        <button class="flex items-center text-text-secondary hover:text-primary-600 transition-smooth">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Previous: Linear Equations Review
+                        </button>
+                        <div class="flex items-center space-x-4">
+                            <button class="bg-secondary-100 text-text-secondary px-6 py-3 rounded-lg font-medium hover:bg-secondary-200 transition-smooth">
+                                Save Progress
+                            </button>
+                            <button onclick="markComplete()" class="btn-primary px-6 py-3">
+                                Mark Complete & Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Interface (Hidden by default) -->
+    <div id="ai-chat" class="fixed bottom-6 right-6 z-50 hidden">
+        <div class="bg-surface rounded-2xl shadow-elevated w-80 max-h-96 overflow-hidden">
+            <div class="bg-accent-500 text-white p-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="font-medium">AI Tutor</span>
+                </div>
+                <button aria-label="Close AI chat" onclick="toggleAIChat()" class="text-white hover:text-accent-100">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto" id="chat-messages">
+                <div class="bg-accent-50 rounded-lg p-3 mb-3">
+                    <p class="text-sm text-text-primary">
+                        Hi! I'm your AI tutor. I can help explain quadratic equations or answer any questions you have about this lesson.
+                    </p>
+                </div>
+            </div>
+            <div class="p-4 border-t border-border-light">
+                <div class="flex">
+                    <input 
+                        type="text" 
+                        placeholder="Ask me anything..."
+                        class="flex-1 input-field mr-2"
+                        id="chat-input"
+                    >
+                    <button aria-label="Send AI chat message" class="bg-accent-500 text-white px-4 py-2 rounded-lg hover:bg-accent-600 transition-smooth">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive Example Functions
+        function checkAnswers() {
+            const a = document.getElementById('coeff-a').value;
+            const b = document.getElementById('coeff-b').value;
+            const c = document.getElementById('coeff-c').value;
+            const feedback = document.getElementById('answer-feedback');
+            
+            let correct = 0;
+            let message = '';
+            
+            if (a === '2') correct++;
+            if (b === '5') correct++;
+            if (c === '-3') correct++;
+            
+            feedback.classList.remove('hidden');
+            
+            if (correct === 3) {
+                feedback.className = 'mt-4 p-3 rounded-lg bg-accent-50 border border-accent-200';
+                feedback.innerHTML = '<div class="flex items-center"><svg class="w-5 h-5 text-accent-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-accent-700 font-medium">Excellent! All coefficients are correct.</span></div>';
+            } else {
+                feedback.className = 'mt-4 p-3 rounded-lg bg-warning-light/10 border border-warning-light/20';
+                feedback.innerHTML = '<div class="flex items-center"><svg class="w-5 h-5 text-warning-light mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg><span class="text-warning-light font-medium">Try again! Remember: a=2, b=5, c=-3</span></div>';
+            }
+        }
+
+        // Quiz Function
+        function checkQuiz() {
+            const selected = document.querySelector('input[name="quiz"]:checked');
+            const feedback = document.getElementById('quiz-feedback');
+            
+            feedback.classList.remove('hidden');
+            
+            if (selected && selected.value === 'b') {
+                feedback.className = 'mt-4 p-3 rounded-lg bg-accent-50 border border-accent-200';
+                feedback.innerHTML = '<div class="flex items-center"><svg class="w-5 h-5 text-accent-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-accent-700 font-medium">Correct! x² - 4x + 4 = 0 is a quadratic equation because the highest power is 2.</span></div>';
+            } else {
+                feedback.className = 'mt-4 p-3 rounded-lg bg-error-light/10 border border-error-light/20';
+                feedback.innerHTML = '<div class="flex items-center"><svg class="w-5 h-5 text-error-light mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-error-light font-medium">Not quite right. A quadratic equation has x² as the highest power term.</span></div>';
+            }
+        }
+
+        // Mark Lesson Complete
+        async function markComplete() {
+            try {
+                // Assuming lessonId is parsed from URL query 'lesson_id'
+                const urlParams = new URLSearchParams(window.location.search);
+                const lessonId = urlParams.get('lesson_id');
+                if (!lessonId) {
+                    EDUApp.showAlert('Invalid lesson ID', 'error');
+                    return;
+                }
+                // Update progress to 100% and completed true
+                await EDUApp.updateProgress(lessonId, { progress_percentage: 100, completed: true });
+                
+                // Update UI progress bar and text
+                const progressBar = document.querySelector('.bg-accent-500');
+                if (progressBar) {
+                    progressBar.style.width = '100%';
+                }
+                const progressText = document.querySelector('.text-sm.font-medium.text-text-secondary');
+                if (progressText) {
+                    progressText.textContent = '100% Complete';
+                }
+
+                EDUApp.showAlert('Lesson marked complete!', 'success');
+
+                // Optionally navigate to next lesson or section
+                // window.location.href = 'lesson_next_page.html';
+
+            } catch (error) {
+                console.error('Failed to mark lesson complete:', error);
+                EDUApp.showAlert('Failed to mark lesson complete', 'error');
+            }
+        }
+
+        // AI Chat Toggle
+        function toggleAIChat() {
+            const chat = document.getElementById('ai-chat');
+            chat.classList.toggle('hidden');
+        }
+
+        // Show AI Chat when button is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const aiButtons = document.querySelectorAll('button');
+            aiButtons.forEach(button => {
+                if (button.textContent.includes('Ask AI Tutor')) {
+                    button.addEventListener('click', function() {
+                        document.getElementById('ai-chat').classList.remove('hidden');
+                    });
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    // Add mobile menu functionality if needed
+                    console.log('Mobile menu toggled');
+                });
+            }
+
+            // Auto-save notes
+            const notesTextarea = document.getElementById('lesson-notes');
+            if (notesTextarea) {
+                notesTextarea.addEventListener('input', function() {
+                    // Simulate auto-save
+                    localStorage.setItem('lesson-notes-intro-quadratic', this.value);
+                });
+
+                // Load saved notes
+                const savedNotes = localStorage.getItem('lesson-notes-intro-quadratic');
+                if (savedNotes) {
+                    notesTextarea.value = savedNotes;
+                }
+            }
+        });
+
+        // Video play simulation
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoButton = document.querySelector('.bg-primary-600.hover\\:bg-primary-700');
+            if (videoButton) {
+                videoButton.addEventListener('click', function() {
+                    // In a real application, this would start the video
+                    alert('Video lesson would start here. This is a demo interface.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
